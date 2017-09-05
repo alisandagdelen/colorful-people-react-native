@@ -26,10 +26,13 @@
   },
   "dependencies": {
     "expo": "^20.0.0",
+    "lodash": "^4.17.4",
     "react": "16.0.0-alpha.12",
     "react-native": "^0.47.0",
     "react-native-reversed-flat-list": "^1.0.2",
     "react-native-training-chat-server": "^1.1.2",
+    "react-navigation": "^1.0.0-beta.11",
+    "react-navigation-props-mapper": "^0.1.0",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",

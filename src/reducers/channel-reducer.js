@@ -1,20 +1,18 @@
-import * as types from '~/actions/types'
+import * as types from '~/src/actions/types'
 
 const initialState = {
-  messages: {},
+  data: [
+    { name: 'can', key: 1 },
+    { name: 'eylem', key: 2 },
+  ],
 };
-
-const addMessage = (prevState, { from, content }) => {
-  messages[from] = messages[from] || {};
-  messages[from].content = content;
-  return messages
-};
-
 
 export default function(state = initialState, action) {
   switch(action.type) {
+
     case types.RECEIVED_NEW_MESSAGE:
       return {...state, messages: addMessage(state, action) };
+
     default:
       return state
   }

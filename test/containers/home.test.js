@@ -1,5 +1,5 @@
 import React from 'react';
-import Home from '~/app/containers/home';
+import Home from '~/src/containers/home';
 
 import renderer from 'react-test-renderer';
 
