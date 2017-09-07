@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Chat from '~/src/components/chat/index';
 import { bindActionCreators } from 'redux';
-import { getChatMessages, addMessage, setTyping } from "~/src/actions/messages";
+import { getChatMessages, addMessage, setTyping } from '~/src/actions/messages';
 
 
 function mapStateToProps(state) {
