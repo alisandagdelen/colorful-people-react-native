@@ -1,6 +1,5 @@
 import React from 'react'
 import { Text, View, TextInput, KeyboardAvoidingView, TouchableOpacity } from 'react-native';
-import { getChannelMessages } from '~/src/actions/messages';
 import ReversedFlatList from 'react-native-reversed-flat-list';
 import styles from './styles';
 
@@ -9,7 +8,11 @@ export default class Home extends React.Component {
   static navigationOptions = { title: 'Messages', };
 
   componentDidMount() {
-    this.props.getChannelMessages(this.props.messages.currentChannel);
+    this.props.getChatMessages(this.props.messages.currentChat);
+  }
+
+  sendMessage() {
+    this.props.addMessage(this.props.messages.currentChat)
   }
 
   renderItem({item}) {
@@ -31,12 +34,12 @@ export default class Home extends React.Component {
           <View style={styles.footer}>
             <TextInput
               value={this.props.typing}
-              onChangeText={text => this.setState({typing: text})}
+              onChangeText={text => this.props.setTyping(text)}
               style={styles.input}
               underlineColorAndroid="transparent"
               placeholder="Type something nice"
             />
-            <TouchableOpacity>
+            <TouchableOpacity onPress={this.sendMessage.bind(this)}>
               <Text style={styles.send}>Send</Text>
             </TouchableOpacity>
           </View>

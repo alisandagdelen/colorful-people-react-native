@@ -1,35 +1,47 @@
 import * as types from '~/src/actions/types'
-import { last } from 'lodash';
+import { last, filter, values } from 'lodash';
 
 const initialState = {
   typing: '',
-  currentChannel: 'can',
+  currentChat: 'can',
   currentData: [],
-  data: [
-    { key: 1, content: 'naber', from: 'can' },
-    { key: 2, content: 'meraba', from: 'eylem' },
-  ],
+  data: {
+    can: [{ key: 1, content: 'naber', from: 'can' }],
+    ozan: [{ key: 2, content: 'meraba', from: 'ozan' }]
+  },
 };
 
-const addMessage = (prevState, { from, content }) => {
+const addMessage = (prevState, { chat }) => {
   const { data } = prevState;
-  data.push({ from, content, key: last(data).key + 1 });
+  const nextKey = last(data[chat]).key + 1;
+  data[chat].push({ from: 'ozan', content: prevState.typing, key: nextKey });
   return data
 };
 
-const getMessagesFrom = (prevState, from) => {
-  return prevState.data.filter(m => m.from === from)
+const getCurrentChatMessages = (prevState) => {
+  return values(prevState.data[prevState.currentChat])
 };
 
 
 export default function (state = initialState, action) {
   switch (action.type) {
 
-    case types.ADD_MESSAGE:
-      return { ...state, data: addMessage(state, action.payload) };
+    case types.TYPING:
+      return { ...state, typing: action.payload.text };
 
-    case types.CHANNEL_SELECTED:
-      return { ...state, currentData: getMessagesFrom(state, action.payload.name) };
+    case types.ADD_MESSAGE:
+      return {
+        ...state,
+        data: addMessage(state, action.payload),
+        currentData: getCurrentChatMessages(state)
+      };
+
+    case types.CHAT_SELECTED:
+      return {
+        ...state,
+        currentChat: action.payload.name,
+        currentData: getCurrentChatMessages(state)
+      };
 
     default:
       return state

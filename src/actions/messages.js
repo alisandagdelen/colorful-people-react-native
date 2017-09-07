@@ -1,9 +1,13 @@
 import * as types from '~/src/actions/types'
 
-export function getChannelMessages(from) {
+export function getChatMessages(from) {
   return { type: types.GET_CHANNEL_MESSAGES, payload: { from } }
 }
 
-export function addMessage(from, content) {
-  return { type: types.ADD_MESSAGE, payload: { from, content }}
+export function addMessage(chat) {
+  return { type: types.ADD_MESSAGE, payload: { chat }}
+}
+
+export function setTyping(text) {
+  return { type: types.TYPING, payload: { text } }
 }

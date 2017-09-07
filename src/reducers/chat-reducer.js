@@ -1,10 +1,10 @@
 import * as types from '~/src/actions/types'
 
 const initialState = {
-  data: [
-    { name: 'can', key: 1 },
-    { name: 'eylem', key: 2 },
-  ],
+  data: {
+    can: { name: 'can', key: 1 },
+    ozan: { name: 'ozan', key: 2 },
+  },
 };
 
 export default function(state = initialState, action) {

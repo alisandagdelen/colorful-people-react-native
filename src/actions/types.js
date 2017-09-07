@@ -1,4 +1,5 @@
-export const CHANNEL_SELECTED = 'CHANNEL_SELECTED';
+export const CHAT_SELECTED = 'CHAT_SELECTED';
 export const GET_CHANNEL_MESSAGES = 'GET_CHANNEL_MESSAGES';
 
 export const ADD_MESSAGE = 'ADD_MESSAGE';
+export const TYPING = 'TYPING';

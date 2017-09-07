@@ -1,18 +1,18 @@
 import { connect } from 'react-redux';
 import Home from '~/src/components/home/index';
 import { bindActionCreators } from 'redux';
-import { getConvesation } from "~/src/actions/channels";
+import { selectChat } from '~/src/actions/chats';
 
 
 function mapStateToProps(state) {
   return {
-    channels: state.channels
+    chats: state.chats
   }
 }
 
 function mapDispatchToProps(dispatch) {
   const actions = bindActionCreators({
-    getConvesation
+    selectChat
   }, dispatch);
   return { ...actions, dispatch };
 }
