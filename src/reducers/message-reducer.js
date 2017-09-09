@@ -16,10 +16,7 @@ const addMessage = (prevState, currentChat) => {
   const newChat = Object.assign([], data[currentChat]);
   newChat.push({ from: 'ozan', content: prevState.typing, key: nextKey });
 
-  const newData = Object.assign({}, data);
-  newData[currentChat] = newChat;
-
-  return newData;
+  return { ...data, [currentChat]: newChat };
 };
 
 
