@@ -11,10 +11,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  const actions = bindActionCreators({
-    selectChat
-  }, dispatch);
-  return { ...actions, dispatch };
+  return bindActionCreators({ selectChat }, dispatch);
 }
 
 

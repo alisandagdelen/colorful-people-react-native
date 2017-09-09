@@ -1,7 +1,6 @@
 import React from 'react'
 import { View, Button, FlatList } from 'react-native';
 import styles from './styles';
-import _ from 'lodash';
 
 export default class Home extends React.Component {
 
@@ -9,7 +8,7 @@ export default class Home extends React.Component {
 
   renderItem({ item }) {
     const onButtonPressed = () => {
-      this.props.dispatch(this.props.selectChat(item.name));
+      this.props.selectChat(item.name);
       this.props.navigation.navigate('Chat');
     };
 
@@ -27,7 +26,7 @@ export default class Home extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <FlatList data={_.values(this.props.chats.data)}
+        <FlatList data={Object.values(this.props.chats.data)}
                   renderItem={this.renderItem.bind(this)}/>
       </View>
     );
