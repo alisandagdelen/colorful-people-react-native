@@ -4,14 +4,11 @@ import styles from './styles';
 
 export default class Home extends React.Component {
 
-  static navigationOptions = { title: 'Colorful People' };
-
   renderItem({ item }) {
     const onButtonPressed = () => {
       this.props.selectChat(item.name);
       this.props.navigation.navigate('Chat');
     };
-
 
     return (
       <View style={styles.row}>

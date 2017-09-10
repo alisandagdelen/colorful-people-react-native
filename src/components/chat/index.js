@@ -1,12 +1,8 @@
 import React from 'react'
-import { Text, View, TextInput, KeyboardAvoidingView, TouchableOpacity } from 'react-native';
-import ReversedFlatList from 'react-native-reversed-flat-list';
+import { Text, View, TextInput, KeyboardAvoidingView, TouchableOpacity, Platform, FlatList } from 'react-native';
 import styles from './styles';
-import firebase from '~/firebase/index';
 
 export default class Home extends React.Component {
-
-  static navigationOptions = { title: 'Messages', };
 
   sendMessage() {
     this.props.addMessage(this.props.currentChat, this.props.typing, this.props.currentUser)
@@ -26,8 +22,9 @@ export default class Home extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <ReversedFlatList data={this.props.chatMessages} renderItem={this.renderItem} />
-        <KeyboardAvoidingView behavior="padding">
+        <FlatList inverted={true} data={this.props.chatMessages} renderItem={this.renderItem} />
+        <KeyboardAvoidingView behavior="padding"
+                              keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 80 }>
           <View style={styles.footer}>
             <TextInput
               value={this.props.typing}

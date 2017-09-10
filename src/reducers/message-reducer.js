@@ -10,7 +10,7 @@ const addMessage = (prevState, { currentChat, message }) => {
   const { data } = prevState;
 
   const newChat = Object.assign([], data[currentChat]);
-  newChat.push(message);
+  newChat.unshift(message);
 
   return { ...data, [currentChat]: newChat };
 };
