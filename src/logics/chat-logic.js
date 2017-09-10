@@ -1,6 +1,6 @@
 import { createLogic } from 'redux-logic';
 import * as types from '~/src/actions/types'
-import { fetchChatMessagesSuccess } from "~/src/actions/chats";
+import { fetchChatMessagesSuccess } from "~/src/actions/chat-actions";
 
 export const chatSelectedLogic = createLogic({
 

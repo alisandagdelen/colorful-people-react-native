@@ -1,7 +1,7 @@
 import { StackNavigator } from 'react-navigation';
 import { Platform, StatusBar } from 'react-native';
-import Home from '~/src/containers/home';
-import Chat from '~/src/containers/chat';
+import Home from '~/src/containers/home-container';
+import Chat from '~/src/containers/chat-container';
 import { withMappedNavigationProps } from 'react-navigation-props-mapper';
 
 

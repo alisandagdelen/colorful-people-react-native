@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Home from '~/src/components/home/index';
 import { bindActionCreators } from 'redux';
-import { selectChat } from '~/src/actions/chats';
+import { selectChat } from '~/src/actions/chat-actions';
 
 
 function mapStateToProps(state) {

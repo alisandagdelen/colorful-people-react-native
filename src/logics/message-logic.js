@@ -1,6 +1,6 @@
 import { createLogic } from 'redux-logic';
 import * as types from '~/src/actions/types'
-import { addMessageSuccess } from "~/src/actions/messages";
+import { addMessageSuccess } from "~/src/actions/message-actions";
 
 export const addMessageLogic = createLogic({
 

@@ -1,5 +1,5 @@
-import * as chatLogics from '~/src/logics/chats-logic';
-import * as messageLogics from '~/src/logics/messages-logic';
+import * as chatLogics from '~/src/logics/chat-logic';
+import * as messageLogics from '~/src/logics/message-logic';
 
 export default [
   ...Object.values(chatLogics),
