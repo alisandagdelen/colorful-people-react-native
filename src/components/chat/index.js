@@ -9,18 +9,14 @@ export default class Home extends React.Component {
   static navigationOptions = { title: 'Messages', };
 
   sendMessage() {
-    const messagesRef = firebase.database().ref('messages');
-    const newMessageRef = messagesRef.push({
-      'ozan': { 'sender': 'ozan', content: this.props.typing }
-    });
-    this.props.addMessage(this.props.currentChat)
+    this.props.addMessage(this.props.currentChat, this.props.typing, this.props.currentUser)
   }
 
   renderItem({item}) {
     return (
       <View style={styles.row} key={item.id}>
         <View style={styles.rowText}>
-          <Text style={styles.sender}>{item.from}</Text>
+          <Text style={styles.sender}>{item.sender}</Text>
           <Text style={styles.message}>{item.content}</Text>
         </View>
       </View>

@@ -3,33 +3,35 @@ import { last, filter, values, merge } from 'lodash';
 
 const initialState = {
   typing: '',
-  data: {
-    can: [{ key: 1, content: 'naber', from: 'can' }],
-    ozan: [{ key: 2, content: 'meraba', from: 'ozan' }]
-  },
+  data: {},
 };
 
-const addMessage = (prevState, currentChat) => {
+const addMessage = (prevState, { currentChat, message }) => {
   const { data } = prevState;
-  const nextKey = last(data[currentChat]).key + 1;
 
   const newChat = Object.assign([], data[currentChat]);
-  newChat.push({ from: 'ozan', content: prevState.typing, key: nextKey });
+  newChat.push(message);
 
   return { ...data, [currentChat]: newChat };
 };
 
 
-export default function (state = initialState, action) {
-  switch (action.type) {
+export default function (state = initialState, { type, payload }) {
+  switch (type) {
 
     case types.TYPING:
-      return { ...state, typing: action.payload.text };
+      return { ...state, typing: payload.text };
 
     case types.ADD_MESSAGE_SUCCESS:
       return {
         ...state,
-        data: addMessage(state, action.payload.currentChat)
+        data: addMessage(state, payload)
+      };
+
+    case types.FETCH_CHAT_MESSAGES_SUCCESS:
+      return {
+        ...state,
+        data: { ...state.data, [payload.name]: payload.messages }
       };
 
     default:

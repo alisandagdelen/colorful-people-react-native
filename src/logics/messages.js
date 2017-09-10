@@ -8,8 +8,19 @@ export const addMessageLogic = createLogic({
   cancelType: types.CANCEL_ADD_MESSAGE,
   latest: true,
 
-  process({ action }, dispatch, done) {
-    dispatch(addMessageSuccess(action.payload.chat));
-    done()
+  process({ action, getState, firebase }, dispatch, done) {
+    const { chat, content, sender } = action.payload;
+    const messagesRef = firebase.database().ref(`messages/${chat}`);
+    const newMessageRef = messagesRef.push();
+    const key = newMessageRef.key;
+    const message = { key, sender, content, chat };
+
+    const dispatchSuccess = () => {
+      dispatch(addMessageSuccess(action.payload.chat, message));
+    };
+
+    newMessageRef.set( message )
+      .then(dispatchSuccess)
+      .then(done)
   }
 });

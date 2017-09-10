@@ -1,3 +1,4 @@
+import { View, Platform } from 'react-native';
 import configureStore from '~/src/store/configure-store';
 import React from 'react'
 import { Provider } from 'react-redux';
