@@ -6,7 +6,7 @@ export default  StyleSheet.create({
     backgroundColor: '#fff',
   },
   row: {
-    padding: 20,
+    padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#eee',
   },

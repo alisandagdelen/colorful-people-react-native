@@ -1,6 +1,6 @@
 import { createLogic } from 'redux-logic';
 import * as types from '~/src/actions/types'
-import { fetchChatMessagesSuccess } from "~/src/actions/chat-actions";
+import { fetchChatMessagesSuccess,  fetchChatMessagesFailure} from "~/src/actions/chat-actions";
 
 export const chatSelectedLogic = createLogic({
 
@@ -12,12 +12,19 @@ export const chatSelectedLogic = createLogic({
     const messagesRef = firebase.database().ref(`messages/${action.payload.name}`);
 
     const dispatchSuccess = (snapshot) => {
-      dispatch(fetchChatMessagesSuccess(action.payload.name, snapshot.val() || []))
+      const messages = Object.values(snapshot.val()) || [];
+      dispatch(fetchChatMessagesSuccess(action.payload.name, messages))
     };
 
-    return messagesRef.once('value')
+    const error = (err) => {
+      dispatch(fetchChatMessagesFailure(err))
+    };
+
+
+    return messagesRef.orderByKey().once('value')
       .then(dispatchSuccess)
       .then(done)
+      .catch(error)
   }
 });
 
