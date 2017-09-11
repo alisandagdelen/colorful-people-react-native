@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import Chat from '~/src/components/chat/index';
 import { bindActionCreators } from 'redux';
+import { actions } from '~/src/actions/index'
 import { addMessage, setTyping } from '~/src/actions/message-actions';
 import { currentChatMessagesSelector, messagesSelector, typingSelector } from "~/src/selectors/message-selector";
 import { currentUserSelector } from "~/src/selectors/user-selector";
@@ -18,7 +19,12 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ addMessage, setTyping }, dispatch);
+  return bindActionCreators(
+    {
+      addMessage: actions.message.addMessage,
+      setTyping: actions.message.setTyping
+    },
+    dispatch);
 }
 
 

@@ -1,5 +1,4 @@
-import * as types from '~/src/actions/types'
-import { last, filter, values, merge } from 'lodash';
+import { types } from '~/src/actions/index'
 
 const initialState = {
   typing: '',
@@ -19,7 +18,7 @@ const addMessage = (prevState, { currentChat, message }) => {
 export default function (state = initialState, { type, payload }) {
   switch (type) {
 
-    case types.TYPING:
+    case types.SET_TYPING:
       return { ...state, typing: payload.text };
 
     case types.ADD_MESSAGE_SUCCESS:
