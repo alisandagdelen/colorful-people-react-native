@@ -1,6 +1,6 @@
 import { createLogic } from 'redux-logic';
-import * as types from '~/src/actions/types'
-import { fetchChatMessagesSuccess,  fetchChatMessagesFailure} from "~/src/actions/chat-actions";
+import { types, actions } from '~/src/actions/index';
+const { fetchChatMessagesSuccess, fetchChatMessagesFailure } = actions.chat;
 
 export const chatSelectedLogic = createLogic({
 
@@ -8,23 +8,19 @@ export const chatSelectedLogic = createLogic({
   cancelType: types.CANCEL_FETCH_CHAT_MESSAGES,
   latest: true,
 
-  process({ getState, action, firebase }, dispatch, done) {
-    const messagesRef = firebase.database().ref(`messages/${action.payload.name}`);
-
-    const dispatchSuccess = (snapshot) => {
+  async process({ action, firebase }, dispatch, done) {
+    try {
+      const messagesRef = firebase.database().ref(`messages/${action.payload.name}`);
+      const snapshot = await messagesRef.orderByKey().once('value');
       const messages = Object.values(snapshot.val()) || [];
-      dispatch(fetchChatMessagesSuccess(action.payload.name, messages))
-    };
+      dispatch(fetchChatMessagesSuccess(action.payload.name, messages));
+      done();
+    }
 
-    const error = (err) => {
-      dispatch(fetchChatMessagesFailure(err))
-    };
-
-
-    return messagesRef.orderByKey().once('value')
-      .then(dispatchSuccess)
-      .then(done)
-      .catch(error)
+    catch (err) {
+      dispatch(fetchChatMessagesFailure(err));
+      done(err);
+    }
   }
 });
 

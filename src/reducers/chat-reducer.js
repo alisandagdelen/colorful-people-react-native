@@ -1,4 +1,4 @@
-import * as types from '~/src/actions/types'
+import { types } from '~/src/actions/index'
 
 const initialState = {
   currentChat: null,

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import Home from '~/src/components/home/index';
 import { bindActionCreators } from 'redux';
-import { selectChat } from '~/src/actions/chat-actions';
+import { actions } from '~/src/actions/index';
 
 
 function mapStateToProps(state) {
@@ -11,7 +11,9 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ selectChat }, dispatch);
+  return bindActionCreators({
+    selectChat: actions.chat._selectChat
+  }, dispatch);
 }
 
 

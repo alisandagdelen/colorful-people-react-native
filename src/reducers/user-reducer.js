@@ -1,5 +1,3 @@
-import * as types from '~/src/actions/types'
-
 const initialState = {
   currentUser: 'ozan',
 };

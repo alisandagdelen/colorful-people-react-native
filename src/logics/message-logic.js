@@ -1,6 +1,6 @@
 import { createLogic } from 'redux-logic';
-import * as types from '~/src/actions/types'
-import { addMessageSuccess } from "~/src/actions/message-actions";
+import { types, actions } from '~/src/actions/index';
+const { addMessageSuccess } = actions.message;
 
 export const addMessageLogic = createLogic({
 
@@ -8,19 +8,15 @@ export const addMessageLogic = createLogic({
   cancelType: types.CANCEL_ADD_MESSAGE,
   latest: true,
 
-  process({ action, getState, firebase }, dispatch, done) {
+  async process({ action, firebase }, dispatch, done) {
     const { chat, content, sender } = action.payload;
     const messagesRef = firebase.database().ref(`messages/${chat}`);
     const newMessageRef = messagesRef.push();
     const key = newMessageRef.key;
     const message = { key, sender, content, chat };
 
-    const dispatchSuccess = () => {
-      dispatch(addMessageSuccess(action.payload.chat, message));
-    };
-
-    newMessageRef.set( message )
-      .then(dispatchSuccess)
-      .then(done)
+    await newMessageRef.set(message);
+    dispatch(addMessageSuccess(action.payload.chat, message));
+    done();
   }
 });

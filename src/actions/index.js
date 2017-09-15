@@ -70,4 +70,3 @@ const generateActionConstants = (componentActions) => {
 
 export const actions = generateActionCreators(componentActions);
 export const types = generateActionConstants(componentActions);
-
