@@ -1,16 +1,19 @@
-import { StackNavigator } from 'react-navigation';
+import React from 'react';
 import { Platform, StatusBar } from 'react-native';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Home from '~/src/containers/home-container';
 import Chat from '~/src/containers/chat-container';
 import Login from '~/src/containers/login-container';
 import { withMappedNavigationProps } from 'react-navigation-props-mapper';
+import { addNavigationHelpers, StackNavigator } from 'react-navigation';
 
 
-export default constAppNavigator = StackNavigator(
+export const AppNavigator = StackNavigator(
   {
     Login: {
       screen: withMappedNavigationProps(Login),
-      navigationOptions: {title: 'Login'}
+      navigationOptions: { title: 'Login' }
     },
     Home: {
       screen: withMappedNavigationProps(Home),
@@ -27,3 +30,18 @@ export default constAppNavigator = StackNavigator(
     }
   }
 );
+
+const AppWithNavigationState = ({ dispatch, nav }) => (
+  <AppNavigator navigation={addNavigationHelpers({ dispatch, state: nav })}/>
+);
+
+AppWithNavigationState.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  nav: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  nav: state.nav
+});
+
+export default connect(mapStateToProps)(AppWithNavigationState);

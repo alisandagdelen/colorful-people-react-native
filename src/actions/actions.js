@@ -10,6 +10,7 @@ export default {
     fetchChatMessagesFailure: {
       arguments: ['err']
     },
+
     _selectChat: {
       arguments: ['name'],
       dispatch: {
@@ -19,6 +20,10 @@ export default {
     },
     cancelChatSelected: {
       arguments: ['name']
+    },
+
+    initiateChat: {
+      arguments: ['userId']
     }
   },
 
@@ -48,6 +53,10 @@ export default {
     changePassword: {
       arguments: ['password']
     }
+  },
+
+  nav: {
+    navigateToHome: {}
   }
 };
 
