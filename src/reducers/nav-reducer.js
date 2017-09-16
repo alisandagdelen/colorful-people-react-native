@@ -10,7 +10,7 @@ export default function (state = initialState, action) {
 
   switch (action.type) {
 
-    case types.NAVIGATE_TO_HOME:
+    case types.NAV_NAVIGATE_TO_HOME:
       nextState = AppNavigator.router.getStateForAction(
         NavigationActions.reset({
           index: 0,

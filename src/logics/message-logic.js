@@ -5,8 +5,7 @@ import messageService from '~/services/message'
 
 export const addMessageLogic = createLogic({
 
-  type: types.ADD_MESSAGE,
-  cancelType: types.CANCEL_ADD_MESSAGE,
+  type: types.MESSAGE_ADD_MESSAGE,
   latest: true,
 
   async process({ action }, dispatch, done) {

@@ -1,19 +1,20 @@
 import _ from 'lodash';
 import componentActions from "~/src/actions/actions.js";
 
-const generateActionConstantName = (name) => {
-  return _.snakeCase(name).toUpperCase();
+const generateActionConstantName = (component, name) => {
+  return _.snakeCase(`${component}${_.upperFirst(name)}`).toUpperCase();
 };
 
 
-const generateActionCreator = (action, name) => {
-  const actionConstant = generateActionConstantName(name);
+const generateActionCreator = (component, action, name) => {
+  const actionConstant = generateActionConstantName(component, name);
 
   if (!action.dispatch) {
     return (...args) => {
       const payload = action.arguments
         ? _.zipObject(action.arguments, args)
         : args[0];
+
       return { type: actionConstant, payload };
     };
   }
@@ -23,7 +24,7 @@ const generateActionCreator = (action, name) => {
       _.forEach(action.dispatch, (subAction, subActionName) => {
         const argumentNames = subAction.argumentIndices.map(index => action.arguments[index]);
         const argumentz = subAction.argumentIndices.map(index => args[index]);
-        const subActionConstant = generateActionConstantName(subActionName);
+        const subActionConstant = generateActionConstantName(component, subActionName);
         const payload = _.zipObject(argumentNames, argumentz);
         dispatch({ type: subActionConstant, payload });
       })
@@ -41,7 +42,7 @@ const generateActionCreators = (componentActions) => {
     }
 
     _.forEach(actions, (action, name) => {
-      generatedActions[component][name] = generateActionCreator(action, name)
+      generatedActions[component][name] = generateActionCreator(component, action, name)
     })
   });
 
@@ -52,17 +53,17 @@ const generateActionCreators = (componentActions) => {
 const generateActionConstants = (componentActions) => {
   const constants = {};
 
-  _.forEach(componentActions, (actions) => {
+  _.forEach(componentActions, (actions, component) => {
 
     _.forEach(actions, (action, name) => {
       if (action.dispatch) {
         return _.forEach(action.dispatch, (action, name) => {
-          const actionConstant = generateActionConstantName(name);
+          const actionConstant = generateActionConstantName(component, name);
           constants[actionConstant] = actionConstant;
         })
       }
 
-      const actionConstant = generateActionConstantName(name);
+      const actionConstant = generateActionConstantName(component, name);
       constants[actionConstant] = actionConstant;
     })
   });

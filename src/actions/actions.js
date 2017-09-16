@@ -1,25 +1,22 @@
 export default {
 
   chat: {
-    fetchChatMessagesSuccess: {
+    fetchMessagesSuccess: {
       arguments: ['name', 'messages']
     },
-    fetchChatMessagesFailure: {
+    fetchMessagesFailure: {
       arguments: ['err']
     },
 
     _selectChat: {
       arguments: ['name'],
       dispatch: {
-        chatSelected: { argumentIndices: [0] },
-        fetchChatMessages: { argumentIndices: [0] }
+        selected: { argumentIndices: [0] },
+        fetchMessages: { argumentIndices: [0] }
       }
     },
-
-    initiateChat: {
-      arguments: ['userId']
-    }
   },
+
 
   message: {
     addMessage: {
@@ -33,12 +30,28 @@ export default {
     }
   },
 
+
   user: {
     signIn: {
       arguments: ['username', 'password']
     },
-    signInSuccess: {}
+    signInSuccess: {},
+    signUp: {
+      arguments: ['username', 'password']
+    },
+    signUpSuccess: {},
   },
+
+
+  signUp: {
+    changeUsername: {
+      arguments: ['username']
+    },
+    changePassword: {
+      arguments: ['password']
+    }
+  },
+
 
   login: {
     changeUsername: {
@@ -48,6 +61,7 @@ export default {
       arguments: ['password']
     }
   },
+
 
   nav: {
     navigateToHome: {}

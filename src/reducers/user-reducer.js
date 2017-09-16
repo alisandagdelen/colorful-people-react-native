@@ -10,7 +10,7 @@ export default function(state = initialState, action) {
 
   switch (action.type) {
 
-    case types.SIGN_IN_SUCCESS:
+    case types.USER_SIGN_IN_SUCCESS:
       return { ...state,authorized:true, email: action.payload.email, currentUser: action.payload.email };
 
     default:

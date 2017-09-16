@@ -18,16 +18,16 @@ const addMessage = (prevState, { currentChat, message }) => {
 export default function (state = initialState, { type, payload }) {
   switch (type) {
 
-    case types.SET_TYPING:
+    case types.MESSAGE_SET_TYPING:
       return { ...state, typing: payload.text };
 
-    case types.ADD_MESSAGE_SUCCESS:
+    case types.MESSAGE_ADD_MESSAGE_SUCCESS:
       return {
         ...state,
         data: addMessage(state, payload)
       };
 
-    case types.FETCH_CHAT_MESSAGES_SUCCESS:
+    case types.CHAT_FETCH_MESSAGES_SUCCESS:
       return {
         ...state,
         data: { ...state.data, [payload.name]: payload.messages }

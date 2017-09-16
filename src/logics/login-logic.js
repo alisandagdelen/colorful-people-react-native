@@ -6,7 +6,7 @@ import userService from '~/services/user/index'
 
 export const chatSelectedLogic = createLogic({
 
-  type: types.SIGN_IN,
+  type: types.USER_SIGN_IN,
   latest: true,
 
   async process({ action }, dispatch, done) {

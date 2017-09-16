@@ -1,7 +1,6 @@
 import React from 'react'
 import { FlatList } from 'react-native';
 import { Container, Content, Header, Item, Input, Icon, Button, ListItem, Body, Text } from 'native-base';
-import styles from './styles';
 
 export default class Home extends React.Component {
 
