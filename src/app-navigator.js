@@ -6,7 +6,7 @@ import Login from '~/src/containers/login-container';
 import { withMappedNavigationProps } from 'react-navigation-props-mapper';
 
 
-export default StackNavigator(
+export default constAppNavigator = StackNavigator(
   {
     Login: {
       screen: withMappedNavigationProps(Login),

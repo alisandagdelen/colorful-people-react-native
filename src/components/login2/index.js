@@ -3,6 +3,7 @@ import React from 'react';
 import styles from './styles'
 
 class Login extends React.Component {
+
   render() {
     return (<Container style={{backgroundColor: 'white'}}>
       <Content>

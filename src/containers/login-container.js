@@ -2,13 +2,14 @@ import { connect } from 'react-redux';
 import Login from '~/src/components/login2/index';
 import { bindActionCreators } from 'redux';
 import { actions } from '~/src/actions/index';
+import { authorizedSelector } from "../selectors/user-selector";
 
 
 function mapStateToProps(state) {
   return {
-    users: state.users,
     username: state.login.username,
     password: state.login.password,
+    authorized: authorizedSelector(state),
   }
 }
 

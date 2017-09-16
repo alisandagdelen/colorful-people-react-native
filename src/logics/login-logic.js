@@ -15,15 +15,6 @@ export const chatSelectedLogic = createLogic({
       const { username, password } = action.payload;
       const res = await firebase.auth().signInWithEmailAndPassword(username, password);
       dispatch(signInSuccess(res));
-
-      console.log(getState())
-      const navigateAction = NavigationActions.navigate({
-        routeName: 'Home',
-        params: {},
-        action: NavigationActions.navigate({ routeName: 'Login' })
-      });
-      this.props.navigation.dispatch(navigateAction);
-
       done();
     }
 

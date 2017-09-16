@@ -1,1 +1,0 @@
-import { AppNavigator } from '../navigators/AppNavigator';
