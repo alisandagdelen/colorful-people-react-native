@@ -17,7 +17,7 @@ export const AppNavigator = StackNavigator(
     },
     Home: {
       screen: withMappedNavigationProps(Home),
-      navigationOptions: { title: 'Colorful People' }
+      navigationOptions: { header: null }
     },
     Chat: {
       screen: withMappedNavigationProps(Chat),

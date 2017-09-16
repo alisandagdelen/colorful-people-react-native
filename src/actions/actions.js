@@ -4,9 +4,6 @@ export default {
     fetchChatMessagesSuccess: {
       arguments: ['name', 'messages']
     },
-    cancelFetchChatMessagesSuccess: {
-      arguments: ['name']
-    },
     fetchChatMessagesFailure: {
       arguments: ['err']
     },
@@ -17,9 +14,6 @@ export default {
         chatSelected: { argumentIndices: [0] },
         fetchChatMessages: { argumentIndices: [0] }
       }
-    },
-    cancelChatSelected: {
-      arguments: ['name']
     },
 
     initiateChat: {

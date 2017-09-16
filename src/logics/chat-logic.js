@@ -1,6 +1,7 @@
 import { createLogic } from 'redux-logic';
 import { types, actions } from '~/src/actions/index';
 const { fetchChatMessagesSuccess, fetchChatMessagesFailure } = actions.chat;
+import chatService from '~/services/chat/index';
 
 export const chatSelectedLogic = createLogic({
 
@@ -8,10 +9,9 @@ export const chatSelectedLogic = createLogic({
   cancelType: types.CANCEL_FETCH_CHAT_MESSAGES,
   latest: true,
 
-  async process({ action, firebase }, dispatch, done) {
+  async process({ action }, dispatch, done) {
     try {
-      const messagesRef = firebase.database().ref(`messages/${action.payload.name}`);
-      const snapshot = await messagesRef.orderByKey().once('value');
+      const snapshot = await chatService.fetchMessages(action.payload.name);
       const messages = Object.values(snapshot.val()) || [];
       dispatch(fetchChatMessagesSuccess(action.payload.name, messages));
       done();
