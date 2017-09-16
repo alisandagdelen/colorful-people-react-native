@@ -5,9 +5,10 @@ const config = {
   authDomain: "colorful-people.firebaseapp.com",
   databaseURL: "https://colorful-people.firebaseio.com",
   projectId: "colorful-people",
-  storageBucket: "",
+  storageBucket: "colorful-people.appspot.com",
   messagingSenderId: "889576820080"
 };
+
 
 firebase.initializeApp(config);
 

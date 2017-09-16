@@ -1,30 +1,17 @@
+import { types } from '~/src/actions/index'
+
 const initialState = {
-  currentUser: 'ozan',
+  currentUser: '',
+  email: '',
+  authorized: false,
 };
 
 export default function(state = initialState, action) {
 
   switch (action.type) {
-    case 'SET_USER_NAME':
-      return Object.assign({}, state, {
-        name: action.name
-      });
 
-    case 'SET_USER_AVATAR':
-      return Object.assign({}, state, {
-        avatar: action.avatar
-      });
-
-    case 'USER_START_AUTHORIZING':
-      return Object.assign({}, state, {
-        authorizing: true
-      });
-
-    case 'USER_AUTHORIZED':
-      return Object.assign({}, state, {
-        authorizing: false,
-        authorized: true
-      });
+    case types.SIGN_IN_SUCCESS:
+      return { ...state,authorized:true, email: action.payload.email, currentUser: action.payload.email };
 
     default:
       return state

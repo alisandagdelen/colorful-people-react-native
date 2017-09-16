@@ -34,5 +34,20 @@ export default {
     }
   },
 
+  user: {
+    signIn: {
+      arguments: ['username', 'password']
+    },
+    signInSuccess: {}
+  },
+
+  login: {
+    changeUsername: {
+      arguments: ['username']
+    },
+    changePassword: {
+      arguments: ['password']
+    }
+  }
 };
 

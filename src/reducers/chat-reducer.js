@@ -11,9 +11,6 @@ const initialState = {
 export default function(state = initialState, action) {
   switch(action.type) {
 
-    case types.RECEIVED_NEW_MESSAGE:
-      return { ...state, messages: addMessage(state, action) };
-
     case types.CHAT_SELECTED:
       return { ...state, currentChat: action.payload.name };
 

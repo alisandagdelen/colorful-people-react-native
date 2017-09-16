@@ -11,7 +11,9 @@ const generateActionCreator = (action, name) => {
 
   if (!action.dispatch) {
     return (...args) => {
-      const payload = _.zipObject(action.arguments, args);
+      const payload = action.arguments
+        ? _.zipObject(action.arguments, args)
+        : args[0];
       return { type: actionConstant, payload };
     };
   }
