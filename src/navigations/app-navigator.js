@@ -2,13 +2,12 @@ import React from 'react';
 import { Platform, StatusBar } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Home from '~/src/containers/home-container';
 import Chat from '~/src/containers/chat-container';
 import Login from '~/src/containers/login-container';
 import Signup from '~/src/containers/signup-container';
 import { withMappedNavigationProps } from 'react-navigation-props-mapper';
 import { addNavigationHelpers, StackNavigator } from 'react-navigation';
-import HomeSc from './home-navigatior'
+import HomeNavigator from './home-navigatior'
 
 
 export const AppNavigator = StackNavigator(
@@ -22,8 +21,7 @@ export const AppNavigator = StackNavigator(
       navigationOptions: { title: 'Signup' }
     },
     Home: {
-      // screen: withMappedNavigationProps(Home),
-      screen: withMappedNavigationProps(HomeSc),
+      screen: withMappedNavigationProps(HomeNavigator),
       navigationOptions: { header: null }
     },
     Chat: {

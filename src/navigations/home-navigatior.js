@@ -6,7 +6,7 @@ import Search from '~/src/containers/search-container';
 import { withMappedNavigationProps } from 'react-navigation-props-mapper';
 
 export default TabNavigator({
-  Friends: {
+  Chats: {
     screen: withMappedNavigationProps(Home),
     navigationOptions: { header: null }
   },

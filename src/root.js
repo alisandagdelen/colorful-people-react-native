@@ -2,6 +2,7 @@ import configureStore from '~/src/store/configure-store';
 import React from 'react'
 import { Provider } from 'react-redux';
 import AppNavigator from '~/src/navigations/app-navigator';
+import { Root } from 'native-base';
 
 const store = configureStore();
 
@@ -26,12 +27,14 @@ export default class extends React.Component {
 
   render() {
     if (!this.state.isReady) {
-      return <Expo.AppLoading />;
+      return <Expo.AppLoading/>;
     }
 
     return (
       <Provider store={store}>
-        <AppNavigator/>
+        <Root>
+          <AppNavigator/>
+        </Root>
       </Provider>
     );
   }

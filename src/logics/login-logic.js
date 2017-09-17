@@ -1,4 +1,5 @@
 import { createLogic } from 'redux-logic';
+import { Toast } from 'native-base';
 import { types, actions } from '~/src/actions/index';
 const { signInSuccess } = actions.user;
 const { navigateToHome } = actions.nav;
@@ -19,6 +20,11 @@ export const chatSelectedLogic = createLogic({
     }
 
     catch (err) {
+      Toast.show({
+        text: err.message,
+        position: 'bottom',
+        buttonText: 'Okay'
+      });
       console.log(err.message);
       done(err);
     }

@@ -23,4 +23,5 @@ export const searchByColorId = async (colorId) => {
 export default {
   loginUser,
   createUser,
+  searchByColorId,
 };

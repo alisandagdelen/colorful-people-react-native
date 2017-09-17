@@ -1,11 +1,13 @@
 import { StyleSheet } from 'react-native';
 
 export default  StyleSheet.create({
-  primaryButton: {
-    margin: 10,
-    padding: 15,
-    alignSelf:'center',
-    backgroundColor:"blue",
-    width:150
+  checkBox: {
+    left: 0
   },
+  colorButtonsView: {
+    height: 60,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  }
 });

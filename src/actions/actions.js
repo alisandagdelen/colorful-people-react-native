@@ -41,6 +41,13 @@ export default {
   },
 
 
+  search: {
+    selectColor: { arguments: ['color'] },
+    changeColorId: { arguments: ['text'] },
+    foundByColorId: { arguments: ['data'] },
+  },
+
+
   nav: { navigateToHome: {} }
 };
 

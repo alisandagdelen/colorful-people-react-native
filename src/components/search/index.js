@@ -1,44 +1,51 @@
-import { Header,Container,Title, Content, List, ListItem, InputGroup, Input, Icon, Text, Picker, Button } from 'native-base';
+import { Header, View, Container, Content, Input, Icon, Item } from 'native-base';
 import React from 'react';
-import styles from './styles'
+import styles from './styles';
+import ColorCheckBox from './color-checkbox';
 
-class Login extends React.Component {
+class Search extends React.Component {
+
+  selectColor(color) {
+    this.props.selectColor(color);
+    setImmediate(() => { this.searchInput._root.focus() });
+  }
+
+  enterCharacter(text) {
+    this.props.changeColorId(text);
+    setImmediate(() => { this.searchInput._root.blur() });
+  }
 
   render() {
-    return (<Container style={{backgroundColor: 'white'}}>
-      <Content>
-        <List>
-          <ListItem>
-            <InputGroup>
-              <Icon name="ios-person" style={{ color: '#0A69FE' }} />
-              <Input
-                value={this.props.username}
-                onChangeText={text => this.props.changeUsername(text)}
-                placeholder={"Email Address"} />
-            </InputGroup>
-          </ListItem>
-          <ListItem>
-            <InputGroup>
-              <Icon name="ios-unlock" style={{ color: '#0A69FE' }} />
-              <Input
-                value={this.props.password}
-                onChangeText={text => this.props.changePassword(text)}
-                secureTextEntry={true}
-                placeholder={"Password"} />
-            </InputGroup>
-          </ListItem>
-        </List>
-        <Button onPress={() => this.props.signIn(this.props.username, this.props.password)}
-                style={styles.primaryButton} >
-          <Text>Login</Text>
-        </Button>
-        <Button onPress={() => this.props.navigation.navigate('Signup')} style={styles.primaryButton}>
-          <Text>New to here?</Text>
-        </Button>
+    return (
+      <Container style={{backgroundColor: 'white'}}>
 
-      </Content>
-    </Container>)
+        <Header searchBar rounded>
+          <Item>
+            <Icon name="ios-search" />
+            <Input blurOnSubmit={false}
+                   autoCapitalize='none'
+                   onChangeText={(text) => this.enterCharacter(text)}
+                   autoCorrect={false}
+                   ref={input => this.searchInput = input }
+                   placeholder="Enter Color Id"
+            />
+          </Item>
+        </Header>
+
+        <Content>
+          <View style={styles.colorButtonsView}>
+            <ColorCheckBox color="blue" selectColor={this.selectColor.bind(this)} selectedColor={this.props.selectedColor}/>
+            <ColorCheckBox color="red" selectColor={this.selectColor.bind(this)} selectedColor={this.props.selectedColor}/>
+            <ColorCheckBox color="black" selectColor={this.selectColor.bind(this)} selectedColor={this.props.selectedColor}/>
+            <ColorCheckBox color="purple" selectColor={this.selectColor.bind(this)} selectedColor={this.props.selectedColor}/>
+            <ColorCheckBox color="green" selectColor={this.selectColor.bind(this)} selectedColor={this.props.selectedColor}/>
+            <ColorCheckBox color="orange" selectColor={this.selectColor.bind(this)} selectedColor={this.props.selectedColor}/>
+            <ColorCheckBox color="yellow" selectColor={this.selectColor.bind(this)} selectedColor={this.props.selectedColor}/>
+          </View>
+        </Content>
+
+      </Container>)
   }
 }
 
-export default Login
+export default Search

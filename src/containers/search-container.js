@@ -2,22 +2,21 @@ import { connect } from 'react-redux';
 import Search from '~/src/components/search/index';
 import { bindActionCreators } from 'redux';
 import { actions } from '~/src/actions/index';
-import { authorizedSelector } from "../selectors/user-selector";
+import { selectedColorSelector, colorIdSelector } from "~/src/selectors/search-selector";
 
 
 function mapStateToProps(state) {
   return {
-    username: state.login.username,
-    password: state.login.password,
-    authorized: authorizedSelector(state),
+    selectedColor: selectedColorSelector(state),
+    colorId: colorIdSelector(state),
+    colors: state.color,
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    signIn: actions.login.apply,
-    changeUsername: actions.login.changeUsername,
-    changePassword: actions.login.changePassword
+    selectColor: actions.search.selectColor,
+    changeColorId: actions.search.changeColorId,
   }, dispatch);
 }
 
