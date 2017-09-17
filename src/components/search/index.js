@@ -2,6 +2,7 @@ import { Header, View, Container, Content, Input, Icon, Item } from 'native-base
 import React from 'react';
 import styles from './styles';
 import ColorCheckBox from './color-checkbox';
+import UserCard from './user-card';
 
 class Search extends React.Component {
 
@@ -42,6 +43,9 @@ class Search extends React.Component {
             <ColorCheckBox color="orange" selectColor={this.selectColor.bind(this)} selectedColor={this.props.selectedColor}/>
             <ColorCheckBox color="yellow" selectColor={this.selectColor.bind(this)} selectedColor={this.props.selectedColor}/>
           </View>
+
+          <UserCard user={this.props.foundUser}/>
+
         </Content>
 
       </Container>)

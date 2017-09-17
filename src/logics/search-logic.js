@@ -27,7 +27,10 @@ export const processColorId = createLogic({
     const res = await userService.searchByColorId(action.payload.colorId);
 
     if (res.val) {
-      dispatch(actions.search.foundByColorId(res.val()))
+      const uid = Object.keys(res.val())[0];
+      const data = { ...res.child(uid).val(), uid };
+      console.log(data)
+      dispatch(actions.search.foundByColorId(data))
     }
     done()
   }

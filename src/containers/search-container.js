@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import Search from '~/src/components/search/index';
 import { bindActionCreators } from 'redux';
 import { actions } from '~/src/actions/index';
-import { selectedColorSelector, colorIdSelector } from "~/src/selectors/search-selector";
+import { selectedColorSelector, colorIdSelector, foundUserSelector } from "~/src/selectors/search-selector";
 
 
 function mapStateToProps(state) {
@@ -10,6 +10,7 @@ function mapStateToProps(state) {
     selectedColor: selectedColorSelector(state),
     colorId: colorIdSelector(state),
     colors: state.color,
+    foundUser: foundUserSelector(state),
   }
 }
 
