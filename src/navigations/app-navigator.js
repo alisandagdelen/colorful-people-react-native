@@ -8,6 +8,7 @@ import Login from '~/src/containers/login-container';
 import Signup from '~/src/containers/signup-container';
 import { withMappedNavigationProps } from 'react-navigation-props-mapper';
 import { addNavigationHelpers, StackNavigator } from 'react-navigation';
+import HomeSc from './home-navigatior'
 
 
 export const AppNavigator = StackNavigator(
@@ -21,13 +22,14 @@ export const AppNavigator = StackNavigator(
       navigationOptions: { title: 'Signup' }
     },
     Home: {
-      screen: withMappedNavigationProps(Home),
+      // screen: withMappedNavigationProps(Home),
+      screen: withMappedNavigationProps(HomeSc),
       navigationOptions: { header: null }
     },
     Chat: {
       screen: withMappedNavigationProps(Chat),
       navigationOptions: { title: 'Messages' }
-    },
+    }
   },
   {
     cardStyle: {

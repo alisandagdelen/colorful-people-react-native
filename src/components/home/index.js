@@ -23,18 +23,8 @@ export default class Home extends React.Component {
   render() {
     return (
       <Container>
-        <Header searchBar rounded>
-          <Item>
-            <Icon name="ios-search" />
-            <Input placeholder="Enter Color Id" />
-            <Icon name="ios-people" />
-          </Item>
-          <Button transparent>
-            <Text>Search</Text>
-          </Button>
-        </Header>
         <Content>
-          <FlatList data={Object.values(this.props.chats.data)}
+          <FlatList data={Object.values(this.props.chats)}
                     renderItem={this.renderItem.bind(this)}/>
         </Content>
       </Container>

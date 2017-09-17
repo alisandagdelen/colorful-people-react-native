@@ -1,4 +1,4 @@
-import { AppNavigator } from '~/src/app-navigator';
+import { AppNavigator } from '~/src/navigations/app-navigator';
 import { types } from '~/src/actions/index';
 import { NavigationActions } from 'react-navigation';
 
