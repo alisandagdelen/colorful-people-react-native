@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Login from '~/src/components/login/index';
+import Signup from '~/src/components/signup/index';
 import { bindActionCreators } from 'redux';
 import { actions } from '~/src/actions/index';
 import { authorizedSelector } from "../selectors/user-selector";
@@ -15,11 +15,11 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    signIn: actions.user.signIn,
+    signUp: actions.signUp.apply,
     changeUsername: actions.signUp.changeUsername,
     changePassword: actions.signUp.changePassword
   }, dispatch);
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(Signup)

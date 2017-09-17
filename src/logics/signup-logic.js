@@ -1,19 +1,19 @@
 import { createLogic } from 'redux-logic';
 import { types, actions } from '~/src/actions/index';
-const { signInSuccess } = actions.user;
+const { signUpSuccess } = actions.user;
 const { navigateToHome } = actions.nav;
-import userService from '~/services/user/index'
+import userService from '~/services/user/index';
 
-export const chatSelectedLogic = createLogic({
+export const signupApplyLogic = createLogic({
 
-  type: types.LOGIN_APPLY,
+  type: types.SIGN_UP_APPLY,
   latest: true,
 
   async process({ action }, dispatch, done) {
     try {
       const { username, password } = action.payload;
-      const res = await userService.loginUser(username, password);
-      dispatch(signInSuccess(res));
+      const res = await userService.createUser(username, password);
+      dispatch(signUpSuccess(res));
       dispatch(navigateToHome());
       done();
     }

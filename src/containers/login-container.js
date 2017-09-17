@@ -15,7 +15,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    signIn: actions.user.signIn,
+    signIn: actions.login.apply,
     changeUsername: actions.login.changeUsername,
     changePassword: actions.login.changePassword
   }, dispatch);

@@ -28,7 +28,7 @@ class SignUp extends React.Component {
             </InputGroup>
           </ListItem>
         </List>
-        <Button onPress={() => this.props.signIn(this.props.username, this.props.password)}
+        <Button onPress={() => this.props.signUp(this.props.username, this.props.password)}
                 style={styles.primaryButton} >
           <Text>Sign Up</Text>
         </Button>

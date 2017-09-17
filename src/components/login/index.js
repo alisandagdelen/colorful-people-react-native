@@ -32,7 +32,7 @@ class Login extends React.Component {
                 style={styles.primaryButton} >
           <Text>Login</Text>
         </Button>
-        <Button onPress={() => console.log(1)} style={styles.primaryButton}>
+        <Button onPress={() => this.props.navigation.navigate('Signup')} style={styles.primaryButton}>
           <Text>New to here?</Text>
         </Button>
 

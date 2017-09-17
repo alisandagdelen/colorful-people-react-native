@@ -2,11 +2,11 @@ import { AppNavigator } from '~/src/app-navigator';
 import { types } from '~/src/actions/index';
 import { NavigationActions } from 'react-navigation';
 
-const initialState = AppNavigator.router.getStateForAction(AppNavigator.router.getActionForPathAndParams('Login'));
+// const initialState = AppNavigator.router.getStateForAction(AppNavigator.router.getActionForPathAndParams('Login'));
+const initialState = AppNavigator.router.getStateForAction(NavigationActions.init());
 
 export default function (state = initialState, action) {
   let nextState;
-  // const nextState = AppNavigator.router.getStateForAction(action, state);
 
   switch (action.type) {
 
@@ -15,6 +15,7 @@ export default function (state = initialState, action) {
         NavigationActions.reset({
           index: 0,
           actions: [NavigationActions.navigate({ routeName: 'Home' })],
+          key: null
         }),
         state
       );

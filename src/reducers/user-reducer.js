@@ -4,14 +4,25 @@ const initialState = {
   currentUser: '',
   email: '',
   authorized: false,
+  uid: '',
+  colorId: '',
 };
 
 export default function(state = initialState, action) {
 
   switch (action.type) {
 
+    case types.USER_SIGN_UP_SUCCESS:
     case types.USER_SIGN_IN_SUCCESS:
-      return { ...state,authorized:true, email: action.payload.email, currentUser: action.payload.email };
+      console.log(action)
+      return {
+        ...state,
+        authorized:true,
+        email: action.payload.data.email,
+        currentUser: action.payload.data.email,
+        uid: action.payload.data.uid,
+        colorId: action.payload.data.colorId
+      };
 
     default:
       return state

@@ -10,6 +10,7 @@ const reduxLogicDeps = { firebase };
 const logicMiddleware = createLogicMiddleware(logicArray, reduxLogicDeps);
 
 const enhancer = compose(
+  // applyMiddleware(thunk, logicMiddleware, createLogger()),
   applyMiddleware(thunk, logicMiddleware, createLogger()),
 );
 

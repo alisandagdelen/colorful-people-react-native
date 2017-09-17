@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Home from '~/src/containers/home-container';
 import Chat from '~/src/containers/chat-container';
 import Login from '~/src/containers/login-container';
+import Signup from '~/src/containers/signup-container';
 import { withMappedNavigationProps } from 'react-navigation-props-mapper';
 import { addNavigationHelpers, StackNavigator } from 'react-navigation';
 
@@ -14,6 +15,10 @@ export const AppNavigator = StackNavigator(
     Login: {
       screen: withMappedNavigationProps(Login),
       navigationOptions: { title: 'Login' }
+    },
+    Signup: {
+      screen: withMappedNavigationProps(Signup),
+      navigationOptions: { title: 'Signup' }
     },
     Home: {
       screen: withMappedNavigationProps(Home),
