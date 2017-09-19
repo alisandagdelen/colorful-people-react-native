@@ -2,6 +2,7 @@ import { createLogic } from 'redux-logic';
 import { types, actions } from '~/src/actions/index';
 const { fetchMessagesSuccess, fetchMessagesFailure } = actions.chat;
 import chatService from '~/services/chat/index';
+import { showToast } from "../helpers/index";
 
 export const chatSelectedLogic = createLogic({
 
@@ -10,13 +11,14 @@ export const chatSelectedLogic = createLogic({
 
   async process({ action }, dispatch, done) {
     try {
-      const snapshot = await chatService.fetchMessages(action.payload.name);
-      const messages = Object.values(snapshot.val()) || [];
-      dispatch(fetchMessagesSuccess(action.payload.name, messages));
+      const snapshot = await chatService.fetchMessages(action.payload.uid);
+      const messages = snapshot.val ? Object.values(snapshot.val() || {}) : [];
+      dispatch(fetchMessagesSuccess(action.payload.uid, messages));
       done();
     }
 
     catch (err) {
+      showToast(err.message);
       dispatch(fetchMessagesFailure(err));
       done(err);
     }

@@ -5,7 +5,7 @@ export default {
     fetchMessagesFailure: { arguments: ['err'] },
 
     _selectChat: {
-      arguments: ['name'],
+      arguments: ['uid'],
       dispatch: {
         selected      : { argumentIndices: [0] },
         fetchMessages : { argumentIndices: [0] },
@@ -22,8 +22,10 @@ export default {
 
 
   user: {
-    signInSuccess   : { arguments: ['data'] },
-    signUpSuccess   : { arguments: ['data'] },
+    signInSuccess     : { arguments: ['data'] },
+    signUpSuccess     : { arguments: ['data'] },
+    fetchChats        : { },
+    fetchChatsSuccess : { arguments: ['data'] },
   },
 
 
@@ -42,9 +44,11 @@ export default {
 
 
   search: {
-    selectColor: { arguments: ['color'] },
-    changeColorId: { arguments: ['text'] },
-    foundByColorId: { arguments: ['data'] },
+    selectColor:      { arguments: ['color'] },
+    changeColorId:    { arguments: ['text'] },
+    foundByColorId:   { arguments: ['data'] },
+    startChat:        { arguments: ['userUid', 'userEmail'] },
+    startChatSuccess: { arguments: ['chatData'] },
   },
 
 

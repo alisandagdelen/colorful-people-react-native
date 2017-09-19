@@ -18,6 +18,7 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     selectColor: actions.search.selectColor,
     changeColorId: actions.search.changeColorId,
+    startChat: actions.search.startChat,
   }, dispatch);
 }
 

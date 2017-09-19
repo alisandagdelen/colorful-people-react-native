@@ -9,5 +9,8 @@ export default  StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
+  },
+  button: {
+    marginLeft: 10
   }
 });

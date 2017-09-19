@@ -6,7 +6,7 @@ export default class Home extends React.Component {
 
   renderItem({ item }) {
     const onButtonPressed = () => {
-      this.props.selectChat(item.name);
+      this.props.selectChat(item.uid);
       this.props.navigation.navigate('Chat');
     };
 
@@ -25,7 +25,9 @@ export default class Home extends React.Component {
       <Container>
         <Content>
           <FlatList data={Object.values(this.props.chats)}
-                    renderItem={this.renderItem.bind(this)}/>
+                    renderItem={this.renderItem.bind(this)}
+                    keyExtractor={(item) => item.uid}
+          />
         </Content>
       </Container>
     );

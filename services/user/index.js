@@ -20,8 +20,13 @@ export const searchByColorId = async (colorId) => {
   return await firebase.database().ref('users').orderByChild('colorId').equalTo(colorId).once('value');
 };
 
+export const fetchChatsOfUser = async (uid) => {
+  return [];
+};
+
 export default {
   loginUser,
   createUser,
   searchByColorId,
+  fetchChatsOfUser,
 };

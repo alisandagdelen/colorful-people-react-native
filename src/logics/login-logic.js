@@ -1,11 +1,12 @@
 import { createLogic } from 'redux-logic';
 import { Toast } from 'native-base';
 import { types, actions } from '~/src/actions/index';
-const { signInSuccess } = actions.user;
+const { signInSuccess, fetchChats } = actions.user;
 const { navigateToHome } = actions.nav;
 import userService from '~/services/user/index'
+import { showToast } from "../helpers/index";
 
-export const chatSelectedLogic = createLogic({
+export const loginApplyLogic = createLogic({
 
   type: types.LOGIN_APPLY,
   latest: true,
@@ -15,16 +16,13 @@ export const chatSelectedLogic = createLogic({
       const { username, password } = action.payload;
       const res = await userService.loginUser(username, password);
       dispatch(signInSuccess(res));
+      dispatch(fetchChats());
       dispatch(navigateToHome());
       done();
     }
 
     catch (err) {
-      Toast.show({
-        text: err.message,
-        position: 'bottom',
-        buttonText: 'Okay'
-      });
+      showToast(err.message);
       console.log(err.message);
       done(err);
     }

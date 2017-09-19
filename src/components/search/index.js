@@ -44,7 +44,7 @@ class Search extends React.Component {
             <ColorCheckBox color="yellow" selectColor={this.selectColor.bind(this)} selectedColor={this.props.selectedColor}/>
           </View>
 
-          <UserCard user={this.props.foundUser}/>
+          <UserCard startChat={this.props.startChat} user={this.props.foundUser}/>
 
         </Content>
 

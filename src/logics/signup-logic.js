@@ -1,9 +1,9 @@
 import { createLogic } from 'redux-logic';
-import { Toast } from 'native-base';
 import { types, actions } from '~/src/actions/index';
 const { signUpSuccess } = actions.user;
 const { navigateToHome } = actions.nav;
 import userService from '~/services/user/index';
+import { showToast } from "../helpers/index";
 
 export const signupApplyLogic = createLogic({
 
@@ -20,11 +20,7 @@ export const signupApplyLogic = createLogic({
     }
 
     catch (err) {
-      Toast.show({
-        text: err.message,
-        position: 'bottom',
-        buttonText: 'Okay'
-      });
+      showToast(err.message)
       console.log(err.message);
       done(err);
     }

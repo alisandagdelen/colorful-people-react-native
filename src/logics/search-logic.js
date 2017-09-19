@@ -1,13 +1,15 @@
 import { createLogic } from 'redux-logic';
 import { types, actions } from '~/src/actions/index';
 import userService from '~/services/user/index'
+import chatService from '~/services/chat/index'
+import { showToast } from "../helpers/index";
 
 export const processColorId = createLogic({
 
   type: types.SEARCH_CHANGE_COLOR_ID,
   latest: true,
 
-  validate({action, getState}, allow, reject) {
+  validate({action, getState}, allow) {
     let { colorId, selectedColor } = getState().search;
     const { colors } = getState();
     const { text } = action.payload;
@@ -24,16 +26,49 @@ export const processColorId = createLogic({
       return done();
     }
 
-    const res = await userService.searchByColorId(action.payload.colorId);
+    try {
+      const res = await userService.searchByColorId(action.payload.colorId);
 
-    if (res.val) {
+      if (!res.val) {
+        return done()
+      }
+
       const uid = Object.keys(res.val())[0];
       const data = { ...res.child(uid).val(), uid };
-      console.log(data)
-      dispatch(actions.search.foundByColorId(data))
+      dispatch(actions.search.foundByColorId(data));
+      done();
     }
-    done()
+
+    catch (err) {
+      showToast(err.message);
+      done(err);
+    }
   }
 });
 
+
+export const startChat = createLogic({
+
+  type: types.SEARCH_START_CHAT,
+  latest: true,
+
+  async process({ action, getState }, dispatch, done) {
+    try {
+      const chatData = await chatService.startChat(
+        getState().users.uid,
+        getState().users.email,
+        action.payload.userUid,
+        action.payload.userEmail,
+      );
+
+      dispatch(actions.search.startChatSuccess(chatData));
+      done()
+    }
+
+    catch (err) {
+      showToast(err.message);
+      done(err);
+    }
+  }
+});
 

@@ -12,9 +12,11 @@ export default function(state = initialState, action) {
 
   switch (action.type) {
 
+    case types.USER_FETCH_CHATS_SUCCESS:
+      return state;
+
     case types.USER_SIGN_UP_SUCCESS:
     case types.USER_SIGN_IN_SUCCESS:
-      console.log(action)
       return {
         ...state,
         authorized:true,
