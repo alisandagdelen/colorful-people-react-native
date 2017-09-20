@@ -2,7 +2,7 @@ import { createLogic } from 'redux-logic';
 import { types, actions } from '~/src/actions/index';
 const { signUpSuccess } = actions.user;
 const { navigateToHome } = actions.nav;
-import userService from '~/services/user/index';
+import userService from '~/services/user-service';
 import { showToast } from "../helpers/index";
 
 export const signupApplyLogic = createLogic({

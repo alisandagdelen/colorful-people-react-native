@@ -1,7 +1,7 @@
 import { createLogic } from 'redux-logic';
 import { types, actions } from '~/src/actions/index';
 const { addMessageSuccess } = actions.message;
-import messageService from '~/services/message'
+import messageService from '~/services/message-service'
 
 export const addMessageLogic = createLogic({
 
@@ -9,9 +9,9 @@ export const addMessageLogic = createLogic({
   latest: true,
 
   async process({ action }, dispatch, done) {
-    const { chat, content, sender } = action.payload;
-    const message = await messageService.createMessage(chat, sender, content);
-    dispatch(addMessageSuccess(action.payload.chat, message));
+    const { chatUid, content, sender } = action.payload;
+    const message = await messageService.createMessage(chatUid, sender, content);
+    dispatch(addMessageSuccess(chatUid, message));
     done();
   }
 });

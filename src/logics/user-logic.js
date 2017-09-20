@@ -1,25 +1,24 @@
 import { createLogic } from 'redux-logic';
 import { types, actions } from '~/src/actions/index';
-const { fetchMessagesSuccess, fetchMessagesFailure } = actions.chat;
-import chatService from '~/services/chat/index';
+import chatService from '~/services/chat-service';
 import { showToast } from "../helpers/index";
 
-export const chatSelectedLogic = createLogic({
+export const fetchChatsLogic = createLogic({
 
   type: types.USER_FETCH_CHATS,
   latest: true,
 
-  async process({ action }, dispatch, done) {
+  async process({ action, getState }, dispatch, done) {
     try {
-      const snapshot = await chatService.fetchMessages(action.payload.uid);
-      const messages = snapshot.val ? Object.values(snapshot.val() || {}) : [];
-      dispatch(fetchMessagesSuccess(action.payload.uid, messages));
+      const { chats, email } = getState().users;
+      const chatUids = Object.keys(chats || {});
+      const data = await chatService.fetchChatsById(chatUids, { currentUserEmail: email });
+      dispatch(actions.user.fetchChatsSuccess(data));
       done();
     }
 
     catch (err) {
       showToast(err.message);
-      dispatch(fetchMessagesFailure(err));
       done(err);
     }
   }

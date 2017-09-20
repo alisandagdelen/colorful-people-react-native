@@ -1,7 +1,7 @@
 import { types } from '~/src/actions/index'
 
 const initialState = {
-  username: 'ozan@gmail.com',
+  username: 'can@gmail.com',
   password: '123456',
 };
 

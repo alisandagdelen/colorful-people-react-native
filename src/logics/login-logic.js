@@ -3,7 +3,7 @@ import { Toast } from 'native-base';
 import { types, actions } from '~/src/actions/index';
 const { signInSuccess, fetchChats } = actions.user;
 const { navigateToHome } = actions.nav;
-import userService from '~/services/user/index'
+import userService from '~/services/user-service'
 import { showToast } from "../helpers/index";
 
 export const loginApplyLogic = createLogic({
@@ -16,7 +16,7 @@ export const loginApplyLogic = createLogic({
       const { username, password } = action.payload;
       const res = await userService.loginUser(username, password);
       dispatch(signInSuccess(res));
-      dispatch(fetchChats());
+      dispatch(fetchChats(res.chats));
       dispatch(navigateToHome());
       done();
     }

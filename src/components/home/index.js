@@ -26,7 +26,7 @@ export default class Home extends React.Component {
         <Content>
           <FlatList data={Object.values(this.props.chats)}
                     renderItem={this.renderItem.bind(this)}
-                    keyExtractor={(item) => item.uid}
+                    keyExtractor={(item) => item.name}
           />
         </Content>
       </Container>

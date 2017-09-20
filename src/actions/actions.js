@@ -16,8 +16,9 @@ export default {
 
   message: {
     setTyping         : { arguments: ['text'] },
-    addMessage        : { arguments: ['chat', 'content', 'sender'] },
-    addMessageSuccess : { arguments: ['currentChat', 'message'] },
+    addMessage        : { arguments: ['chatUid', 'content', 'sender'] },
+    addMessageSuccess : { arguments: ['chatUid', 'message'] },
+    startListening    : { },
   },
 
 

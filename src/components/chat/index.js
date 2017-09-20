@@ -5,7 +5,7 @@ import styles from './styles';
 export default class Home extends React.Component {
 
   sendMessage() {
-    this.props.addMessage(this.props.currentChat, this.props.typing, this.props.currentUser)
+    this.props.addMessage(this.props.currentChat, this.props.typing, this.props.currentUserEmail)
   }
 
   renderItem({item}) {
@@ -22,7 +22,10 @@ export default class Home extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <FlatList inverted={true} data={this.props.chatMessages} renderItem={this.renderItem} />
+        <FlatList inverted={true}
+                  data={this.props.chatMessages}
+                  renderItem={this.renderItem}
+        />
         <KeyboardAvoidingView behavior="padding"
                               keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 80 }>
           <View style={styles.footer}>

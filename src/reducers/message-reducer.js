@@ -5,13 +5,13 @@ const initialState = {
   data: {},
 };
 
-const addMessage = (prevState, { currentChat, message }) => {
+const addMessage = (prevState, { chatUid, message }) => {
   const { data } = prevState;
 
-  const newChat = Object.assign([], data[currentChat]);
+  const newChat = Object.assign([], data[chatUid]);
   newChat.push(message);
 
-  return { ...data, [currentChat]: newChat };
+  return { ...data, [chatUid]: newChat };
 };
 
 

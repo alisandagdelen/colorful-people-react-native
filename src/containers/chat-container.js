@@ -3,7 +3,7 @@ import Chat from '~/src/components/chat/index';
 import { bindActionCreators } from 'redux';
 import { actions } from '~/src/actions/index';
 import { currentChatMessagesSelector, messagesSelector, typingSelector } from "~/src/selectors/message-selector";
-import { currentUserSelector } from "~/src/selectors/user-selector";
+import { currentUserUidSelector, currentUserEmailSelector } from "~/src/selectors/user-selector";
 import { currentChatSelector } from "~/src/selectors/chat-selector";
 
 
@@ -13,7 +13,8 @@ function mapStateToProps(state) {
     messages: messagesSelector(state),
     typing: typingSelector(state),
     currentChat: currentChatSelector(state),
-    currentUser: currentUserSelector(state),
+    currentUserUid: currentUserUidSelector(state),
+    currentUserEmail: currentUserEmailSelector(state),
   }
 }
 

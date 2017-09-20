@@ -1,7 +1,7 @@
 import { createLogic } from 'redux-logic';
 import { types, actions } from '~/src/actions/index';
-import userService from '~/services/user/index'
-import chatService from '~/services/chat/index'
+import userService from '~/services/user-service'
+import chatService from '~/services/chat-service'
 import { showToast } from "../helpers/index";
 
 export const processColorId = createLogic({
