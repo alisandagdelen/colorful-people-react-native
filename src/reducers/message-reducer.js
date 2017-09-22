@@ -1,5 +1,9 @@
 import { types } from '~/src/actions/index'
 
+const data___ = {
+  ['keyOfChat']: { ['messageKey']: Array }
+};
+
 const initialState = {
   typing: '',
   data: {},
@@ -32,6 +36,12 @@ export default function (state = initialState, { type, payload }) {
         ...state,
         data: { ...state.data, [payload.name]: payload.messages }
       };
+
+    case types.CHAT_FETCH_MESSAGE_SUCCESS:
+      const newMessages = state.data[payload.name] ? [...state.data[payload.name]] : [];
+      newMessages.push(payload.message);
+      console.log(newMessages)
+      return { ...state, data: { ...state.data, [payload.name]: newMessages } };
 
     default:
       return state

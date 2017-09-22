@@ -18,6 +18,7 @@ export const startChat = async (currentUserUid, currentUserEmail, otherUserUid, 
   const updates = {};
   updates[`/chats/${newChatRef.key}`] = chatData;
   updates[`/users/${currentUserUid}/chats/${newChatRef.key}`] = true;
+  updates[`/users/${otherUserUid}/chats/${newChatRef.key}`] = true;
 
   await firebase.database().ref().update(updates);
 

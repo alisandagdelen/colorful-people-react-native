@@ -1,6 +1,7 @@
 export default {
 
   chat: {
+    fetchMessageSuccess: { arguments: ['name', 'message'] },
     fetchMessagesSuccess: { arguments: ['name', 'messages'] },
     fetchMessagesFailure: { arguments: ['err'] },
 
@@ -11,6 +12,8 @@ export default {
         fetchMessages : { argumentIndices: [0] },
       }
     },
+
+    listenForMessage: { arguments: ['chatUid'] },
   },
 
 

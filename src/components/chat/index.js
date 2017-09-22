@@ -25,6 +25,7 @@ export default class Home extends React.Component {
         <FlatList inverted={true}
                   data={this.props.chatMessages}
                   renderItem={this.renderItem}
+                  keyExtractor={(item) => {console.log(item); return item.key}}
         />
         <KeyboardAvoidingView behavior="padding"
                               keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 80 }>

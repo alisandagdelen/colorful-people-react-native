@@ -13,7 +13,7 @@ export const signupApplyLogic = createLogic({
   async process({ action }, dispatch, done) {
     try {
       const { username, password } = action.payload;
-      const res = await userService.createUser(username, password);
+      const res = await userService.createUser(username.trim(), password.trim());
       dispatch(signUpSuccess(res));
       dispatch(navigateToHome());
       done();
