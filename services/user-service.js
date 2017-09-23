@@ -1,4 +1,4 @@
-import firebase from '~/firebase/index';
+import firebase from '../firebase/index';
 
 export const getUserInfo = async (uid) => {
   return await firebase.database().ref(`users/${uid}`).orderByKey().once('value');

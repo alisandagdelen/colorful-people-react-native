@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
-import messages from '~/src/reducers/message-reducer';
-import chats from '~/src/reducers/chat-reducer';
-import users from '~/src/reducers/user-reducer';
-import login from '~/src/reducers/login-reducer';
-import signUp from '~/src/reducers/signup-reducer';
-import nav from '~/src/reducers/nav-reducer';
-import search from '~/src/reducers/search-reducer';
+import messages from './message-reducer';
+import chats from './chat-reducer';
+import users from './user-reducer';
+import login from './login-reducer';
+import signUp from './signup-reducer';
+import nav from './nav-reducer';
+import search from './search-reducer';
 
 const colors = () => {
  return {

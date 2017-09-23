@@ -1,9 +1,9 @@
 import { createLogic } from 'redux-logic';
 import { Toast } from 'native-base';
-import { types, actions } from '~/src/actions/index';
+import { types, actions } from '../actions/index';
 const { signInSuccess, fetchChats } = actions.user;
 const { navigateToHome } = actions.nav;
-import userService from '~/services/user-service'
+import userService from '../../services/user-service'
 import { showToast } from "../helpers/index";
 
 export const loginApplyLogic = createLogic({

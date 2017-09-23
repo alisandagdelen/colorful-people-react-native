@@ -1,7 +1,7 @@
-import configureStore from '~/src/store/configure-store';
+import configureStore from './store/configure-store';
 import React from 'react'
 import { Provider } from 'react-redux';
-import AppNavigator from '~/src/navigations/app-navigator';
+import AppNavigator from './navigations/app-navigator';
 import { Root } from 'native-base';
 
 const store = configureStore();

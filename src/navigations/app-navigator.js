@@ -2,9 +2,9 @@ import React from 'react';
 import { Platform, StatusBar } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Chat from '~/src/containers/chat-container';
-import Login from '~/src/containers/login-container';
-import Signup from '~/src/containers/signup-container';
+import Chat from '../containers/chat-container';
+import Login from '../containers/login-container';
+import Signup from '../containers/signup-container';
 import { withMappedNavigationProps } from 'react-navigation-props-mapper';
 import { addNavigationHelpers, StackNavigator } from 'react-navigation';
 import HomeNavigator from './home-navigatior'

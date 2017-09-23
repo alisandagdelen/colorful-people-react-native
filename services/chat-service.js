@@ -1,4 +1,4 @@
-import firebase from '~/firebase/index';
+import firebase from '../firebase/index';
 
 export const fetchMessages = async (chatUid) => {
   const messagesRef = firebase.database().ref(`messages/${chatUid}`);

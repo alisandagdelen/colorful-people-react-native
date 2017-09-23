@@ -1,4 +1,4 @@
-import { types } from '~/src/actions/index'
+import { types } from '../actions/index'
 
 const data___ = {
   ['keyOfChat']: { ['messageKey']: Array }

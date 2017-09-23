@@ -1,5 +1,5 @@
-import { AppNavigator } from '~/src/navigations/app-navigator';
-import { types } from '~/src/actions/index';
+import { AppNavigator } from '../navigations/app-navigator';
+import { types } from '../actions/index';
 import { NavigationActions } from 'react-navigation';
 
 // const initialState = AppNavigator.router.getStateForAction(AppNavigator.router.getActionForPathAndParams('Login'));

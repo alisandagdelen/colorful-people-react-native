@@ -1,7 +1,7 @@
 import { createLogic } from 'redux-logic';
-import { types, actions } from '~/src/actions/index';
+import { types, actions } from '../actions/index';
 const { fetchMessagesSuccess, fetchMessageSuccess, fetchMessagesFailure } = actions.chat;
-import chatService from '~/services/chat-service';
+import chatService from '../../services/chat-service';
 import { showToast } from "../helpers/index";
 import { observeChatMessages } from "../../observers/chat-observer";
 

@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
-import Search from '~/src/components/search/index';
+import Search from '../components/search/index';
 import { bindActionCreators } from 'redux';
-import { actions } from '~/src/actions/index';
-import { selectedColorSelector, colorIdSelector, foundUserSelector } from "~/src/selectors/search-selector";
+import { actions } from '../actions/index';
+import { selectedColorSelector, colorIdSelector, foundUserSelector } from "../selectors/search-selector";
 
 
 function mapStateToProps(state) {

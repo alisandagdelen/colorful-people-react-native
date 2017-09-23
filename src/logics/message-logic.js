@@ -1,7 +1,7 @@
 import { createLogic } from 'redux-logic';
-import { types, actions } from '~/src/actions/index';
+import { types, actions } from '../actions/index';
 const { addMessageSuccess } = actions.message;
-import messageService from '~/services/message-service'
+import messageService from '../../services/message-service'
 
 export const addMessageLogic = createLogic({
 

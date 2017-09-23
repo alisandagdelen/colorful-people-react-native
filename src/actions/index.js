@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import componentActions from "~/src/actions/actions.js";
+import componentActions from "./actions.js";
 
 const generateActionConstantName = (component, name) => {
   return _.snakeCase(`${component}${_.upperFirst(name)}`).toUpperCase();

@@ -1,9 +1,9 @@
 import { createStore, applyMiddleware, compose } from 'redux';
-import allReducers from '~/src/reducers';
+import allReducers from '../reducers';
 import { createLogger } from 'redux-logger';
 import thunk from 'redux-thunk';
-import logicArray from '~/src/logics/index'
-import firebase from '~/firebase'
+import logicArray from '../logics/index'
+import firebase from '../../firebase'
 import { createLogicMiddleware } from 'redux-logic';
 
 const reduxLogicDeps = { firebase };

@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
-import Home from '~/src/components/home/index';
+import Home from '../components/home/index';
 import { bindActionCreators } from 'redux';
-import { actions } from '~/src/actions/index';
-import { activeChatsSelector } from "~/src/selectors/chat-selector";
+import { actions } from '../actions/index';
+import { activeChatsSelector } from "../selectors/chat-selector";
 
 
 function mapStateToProps(state) {

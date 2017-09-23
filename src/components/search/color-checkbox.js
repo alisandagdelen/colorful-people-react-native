@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './styles'
-import { actions } from '~/src/actions/index';
+import { actions } from '../../actions';
 import { CheckBox } from 'native-base';
 
 export default ({ color, selectColor, selectedColor }) => {

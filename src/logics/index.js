@@ -1,9 +1,9 @@
-import * as chatLogics from '~/src/logics/chat-logic';
-import * as messageLogics from '~/src/logics/message-logic';
-import * as loginLogics from '~/src/logics/login-logic';
-import * as signupLogics from '~/src/logics/signup-logic';
-import * as searchLogics from '~/src/logics/search-logic';
-import * as userLogics from '~/src/logics/user-logic';
+import * as chatLogics from './chat-logic';
+import * as messageLogics from './message-logic';
+import * as loginLogics from './login-logic';
+import * as signupLogics from './signup-logic';
+import * as searchLogics from './search-logic';
+import * as userLogics from './user-logic';
 
 export default [
   ...Object.values(chatLogics),

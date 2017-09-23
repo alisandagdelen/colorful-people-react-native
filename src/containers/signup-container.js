@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import Signup from '~/src/components/signup/index';
+import Signup from '../components/signup/index';
 import { bindActionCreators } from 'redux';
-import { actions } from '~/src/actions/index';
+import { actions } from '../actions/index';
 import { authorizedSelector } from "../selectors/user-selector";
 
 

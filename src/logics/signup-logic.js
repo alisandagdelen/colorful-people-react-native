@@ -1,8 +1,8 @@
 import { createLogic } from 'redux-logic';
-import { types, actions } from '~/src/actions/index';
+import { types, actions } from '../actions/index';
 const { signUpSuccess } = actions.user;
 const { navigateToHome } = actions.nav;
-import userService from '~/services/user-service';
+import userService from '../../services/user-service';
 import { showToast } from "../helpers/index";
 
 export const signupApplyLogic = createLogic({

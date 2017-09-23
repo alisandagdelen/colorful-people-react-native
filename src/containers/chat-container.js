@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
-import Chat from '~/src/components/chat/index';
+import Chat from '../components/chat/index';
 import { bindActionCreators } from 'redux';
-import { actions } from '~/src/actions/index';
-import { currentChatMessagesSelector, messagesSelector, typingSelector } from "~/src/selectors/message-selector";
-import { currentUserUidSelector, currentUserEmailSelector } from "~/src/selectors/user-selector";
-import { currentChatSelector } from "~/src/selectors/chat-selector";
+import { actions } from '../actions/index';
+import { currentChatMessagesSelector, messagesSelector, typingSelector } from "../selectors/message-selector";
+import { currentUserUidSelector, currentUserEmailSelector } from "../selectors/user-selector";
+import { currentChatSelector } from "../selectors/chat-selector";
 
 
 function mapStateToProps(state) {
