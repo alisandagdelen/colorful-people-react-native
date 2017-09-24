@@ -31,6 +31,7 @@ export default class Home extends React.Component {
                               keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 80 }>
           <View style={styles.footer}>
             <TextInput
+              autoFocus
               value={this.props.typing}
               onChangeText={text => this.props.setTyping(text)}
               style={styles.input}

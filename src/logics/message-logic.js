@@ -11,6 +11,7 @@ export const addMessageLogic = createLogic({
 
   async process({ action }, dispatch, done) {
     try {
+      dispatch(actions.message.setTyping(''));
       const { chatUid, content, sender } = action.payload;
       const message = await messageService.createMessage(chatUid, sender, content);
       dispatch(addMessageSuccess(chatUid, message));
