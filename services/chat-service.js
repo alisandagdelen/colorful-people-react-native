@@ -5,6 +5,26 @@ export const fetchMessages = async (chatUid) => {
   return await messagesRef.orderByKey().once('value');
 };
 
+
+export const chatExists = async (currentUserUid, currentUserEmail, otherUserEmail) => {
+  const chatsRef = await firebase.database().ref(`/users/${currentUserUid}/chats`).once('value');
+
+  if (!chatsRef || !chatsRef.exists()) {
+    return false;
+  }
+
+  const chatIds = Object.keys(chatsRef.val());
+  const chats = await fetchChatsById(chatIds, { currentUserEmail });
+  const chatValues = Object.values(chats);
+
+  if (chatValues.find(c => c.otherUserEmail === otherUserEmail)) {
+    return true;
+  }
+
+  return false;
+};
+
+
 export const startChat = async (currentUserUid, currentUserEmail, otherUserUid, otherUserEmail) => {
   const newChatRef = firebase.database().ref('chats').push();
   const chatData = {
@@ -56,7 +76,7 @@ export const fetchChatsById = async (chatUids, { currentUserEmail }) => {
     const chat = s.val();
     const emails = Object.values(chat.members);
     const chatName = emails.find(email => email !== currentUserEmail);
-    res[chat.uid] = { name: chatName, uid: chat.uid };
+    res[chat.uid] = { name: chatName, otherUserEmail: chatName, uid: chat.uid };
   });
 
   return res;
@@ -68,4 +88,5 @@ export default {
   fetchMessages,
   fetchChatsById,
   fetchChatById,
+  chatExists,
 };

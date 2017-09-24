@@ -4,6 +4,7 @@ export const showToast = (message) => {
   Toast.show({
     text: message,
     position: 'bottom',
-    buttonText: 'Okay'
+    buttonText: 'Okay',
+    duration: 3000,
   });
 };

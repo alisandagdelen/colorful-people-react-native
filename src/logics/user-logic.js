@@ -36,7 +36,6 @@ export const observeChatsLogic = createLogic({
     try {
       observeChats(uid, async (chat) => {
         const data = await chatService.fetchChatById(chat.key, { currentUserEmail: email });
-        console.log(data)
         dispatch(actions.user.fetchChatSuccess(data),
           { allowMore: true })
       });
