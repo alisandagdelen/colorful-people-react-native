@@ -1,7 +1,7 @@
 import { createLogic } from 'redux-logic';
 import { types, actions } from '../actions/index';
 const { signUpSuccess } = actions.user;
-const { navigateToHome } = actions.nav;
+const { resetToHome } = actions.nav;
 import userService from '../../services/user-service';
 import { showToast } from "../helpers/index";
 
@@ -15,7 +15,7 @@ export const signupApplyLogic = createLogic({
       const { username, password } = action.payload;
       const res = await userService.createUser(username.trim(), password.trim());
       dispatch(signUpSuccess(res));
-      dispatch(navigateToHome());
+      dispatch(resetToHome());
       done();
     }
 

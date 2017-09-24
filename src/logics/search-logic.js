@@ -62,6 +62,8 @@ export const startChat = createLogic({
       );
 
       dispatch(actions.search.startChatSuccess(chatData));
+      dispatch(actions.chat._selectChat(chatData.uid));
+      dispatch(actions.nav.navigateToChat());
       done()
     }
 

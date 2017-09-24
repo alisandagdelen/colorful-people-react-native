@@ -10,7 +10,7 @@ export default function (state = initialState, action) {
 
   switch (action.type) {
 
-    case types.NAV_NAVIGATE_TO_HOME:
+    case types.NAV_RESET_TO_HOME:
       nextState = AppNavigator.router.getStateForAction(
         NavigationActions.reset({
           index: 0,
@@ -18,6 +18,13 @@ export default function (state = initialState, action) {
           key: null
         }),
         state
+      );
+      break;
+
+    case types.NAV_NAVIGATE_TO_CHAT:
+      nextState = AppNavigator.router.getStateForAction(
+        NavigationActions.navigate({ routeName: 'Chat' }),
+        state,
       );
       break;
 

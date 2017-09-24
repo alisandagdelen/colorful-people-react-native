@@ -57,6 +57,9 @@ export default {
   },
 
 
-  nav: { navigateToHome: {} }
+  nav: {
+    resetToHome: {},
+    navigateToChat: {},
+  },
 };
 

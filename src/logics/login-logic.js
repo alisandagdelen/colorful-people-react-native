@@ -2,7 +2,7 @@ import { createLogic } from 'redux-logic';
 import { Toast } from 'native-base';
 import { types, actions } from '../actions/index';
 const { signInSuccess, fetchChats } = actions.user;
-const { navigateToHome } = actions.nav;
+const { resetToHome } = actions.nav;
 import userService from '../../services/user-service'
 import { showToast } from "../helpers/index";
 
@@ -17,7 +17,7 @@ export const loginApplyLogic = createLogic({
       const res = await userService.loginUser(username, password);
       dispatch(signInSuccess(res));
       dispatch(fetchChats(res.chats));
-      dispatch(navigateToHome());
+      dispatch(resetToHome());
       done();
     }
 
