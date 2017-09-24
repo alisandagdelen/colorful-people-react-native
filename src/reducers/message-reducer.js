@@ -1,7 +1,7 @@
 import { types } from '../actions/index'
 
 const data___ = {
-  ['keyOfChat']: { ['messageKey']: Array }
+  ['keyOfChat']: { 'messageKey': Array }
 };
 
 const initialState = {
@@ -26,6 +26,7 @@ export default function (state = initialState, { type, payload }) {
       return { ...state, typing: payload.text };
 
     case types.MESSAGE_ADD_MESSAGE_SUCCESS:
+      return state;
       return {
         ...state,
         data: addMessage(state, payload)
@@ -39,8 +40,9 @@ export default function (state = initialState, { type, payload }) {
 
     case types.CHAT_FETCH_MESSAGE_SUCCESS:
       const newMessages = state.data[payload.name] ? [...state.data[payload.name]] : [];
-      newMessages.push(payload.message);
-      console.log(newMessages)
+      if (!newMessages.find(m => m.key === payload.message.key)) {
+        newMessages.push(payload.message);
+      }
       return { ...state, data: { ...state.data, [payload.name]: newMessages } };
 
     default:

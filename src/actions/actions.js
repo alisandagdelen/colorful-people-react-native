@@ -29,6 +29,7 @@ export default {
     signInSuccess     : { arguments: ['data'] },
     signUpSuccess     : { arguments: ['data'] },
     fetchChats        : { },
+    fetchChatSuccess  : { arguments: ['data'] },
     fetchChatsSuccess : { arguments: ['data'] },
   },
 

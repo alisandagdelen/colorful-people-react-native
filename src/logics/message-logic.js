@@ -2,6 +2,7 @@ import { createLogic } from 'redux-logic';
 import { types, actions } from '../actions/index';
 const { addMessageSuccess } = actions.message;
 import messageService from '../../services/message-service'
+import { showToast } from "../helpers/index";
 
 export const addMessageLogic = createLogic({
 
@@ -9,9 +10,16 @@ export const addMessageLogic = createLogic({
   latest: true,
 
   async process({ action }, dispatch, done) {
-    const { chatUid, content, sender } = action.payload;
-    const message = await messageService.createMessage(chatUid, sender, content);
-    dispatch(addMessageSuccess(chatUid, message));
-    done();
+    try {
+      const { chatUid, content, sender } = action.payload;
+      const message = await messageService.createMessage(chatUid, sender, content);
+      dispatch(addMessageSuccess(chatUid, message));
+      done();
+    }
+
+    catch (err) {
+      showToast(err.message);
+      done(err);
+    }
   }
 });
