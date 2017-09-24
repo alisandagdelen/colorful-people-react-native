@@ -11,6 +11,9 @@ export default function(state = initialState, action) {
     case types.USER_FETCH_CHATS_SUCCESS:
       return { ...state, data: action.payload.data };
 
+    case types.USER_FETCH_CHAT_SUCCESS:
+      return { ...state, data: { ...state.data, [action.payload.data.uid]: action.payload.data } };
+
     case types.CHAT_SELECTED:
       return { ...state, currentChat: action.payload.uid };
 

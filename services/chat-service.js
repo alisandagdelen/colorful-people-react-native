@@ -27,6 +27,19 @@ export const startChat = async (currentUserUid, currentUserEmail, otherUserUid, 
 };
 
 
+export const fetchChatById = async (chatUid, { currentUserEmail }) => {
+  if (!chatUid) {
+    return {};
+  }
+
+  const chatSnapshot = await firebase.database().ref(`chats/${chatUid}`).once('value');
+  const chat = chatSnapshot.val();
+  const emails = Object.values(chat.members);
+  const chatName = emails.find(email => email !== currentUserEmail);
+  return { name: chatName, uid: chat.uid };
+};
+
+
 export const fetchChatsById = async (chatUids, { currentUserEmail }) => {
   if (!chatUids) {
     return {};
@@ -54,4 +67,5 @@ export default {
   startChat,
   fetchMessages,
   fetchChatsById,
+  fetchChatById,
 };
