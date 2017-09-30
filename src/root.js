@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import AppNavigator from './navigations/app-navigator';
 import { Root } from 'native-base';
 
+console.ignoredYellowBox = ['Remote debugger'];
 const store = configureStore();
 
 export default class extends React.Component {
