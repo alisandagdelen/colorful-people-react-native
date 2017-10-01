@@ -1,6 +1,12 @@
 {
   "expo": {
-    "sdkVersion": "20.0.0",
-    "privacy": "unlisted"
+    "name": "Colorful People",
+    "version": "0.0.1",
+    "slug": "colorful-people",
+    "sdkVersion": "21.0.0",
+    "privacy": "unlisted",
+    "android": {
+      "package": "com.ozan.colorfulpeople"
+    }
   }
 }
