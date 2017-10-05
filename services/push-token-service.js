@@ -2,10 +2,7 @@ import firebase from '../firebase/index';
 import { Permissions, Notifications } from 'expo';
 
 export const createPushToken = async (userUid) => {
-  console.log('za1')
-  console.log(userUid)
   const pushTokensRef = firebase.database().ref(`users/${userUid}/push_tokens`);
-  const newPushTokenRef = pushTokensRef.push();
 
   const { existingStatus } = await Permissions.getAsync(Permissions.NOTIFICATIONS);
   let finalStatus = existingStatus;
@@ -18,20 +15,21 @@ export const createPushToken = async (userUid) => {
     const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
     finalStatus = status;
   }
-  console.log('za2')
 
   // Stop here if the user did not grant permissions
   if (finalStatus !== 'granted') {
     return;
   }
 
-  console.log('za3')
   // Get the token that uniquely identifies this device
   let token = await Notifications.getExpoPushTokenAsync();
-  await newPushTokenRef.set(token);
+  const existingPushTokens = await pushTokensRef.once('value');
 
-  console.log('za4')
+  if (existingPushTokens.exists() && Object.values(existingPushTokens.val()).includes(token)) {
+    return;
+  }
 
+  await pushTokensRef.push(token);
 };
 
 
