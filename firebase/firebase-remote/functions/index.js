@@ -1,6 +1,7 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const randomstring = require('randomstring');
+const onMessageCreated = require('./on-message-created');
 admin.initializeApp(functions.config().firebase);
 
 const generateColorId = (colorCount) => {
@@ -26,3 +27,7 @@ exports.afterUserCreate = functions.auth.user().onCreate(event => {
   };
   admin.database().ref(`/users/${event.data.uid}`).set(data)
 });
+
+
+exports.afterMessageSent = functions.database.ref('/messages/{chatId}/{messageId}')
+  .onCreate(onMessageCreated);
