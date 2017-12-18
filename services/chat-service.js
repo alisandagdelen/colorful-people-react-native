@@ -42,7 +42,7 @@ export const startChat = async (currentUserUid, currentUserEmail, otherUserUid, 
 
   await firebase.database().ref().update(updates);
 
-  chatData.name = otherUserEmail;
+  chatData.otherUserEmail = otherUserEmail;
   return chatData;
 };
 
@@ -55,8 +55,8 @@ export const fetchChatById = async (chatUid, { currentUserEmail }) => {
   const chatSnapshot = await firebase.database().ref(`chats/${chatUid}`).once('value');
   const chat = chatSnapshot.val();
   const emails = Object.values(chat.members);
-  const chatName = emails.find(email => email !== currentUserEmail);
-  return { name: chatName, uid: chat.uid };
+  const otherUserEmail = emails.find(email => email !== currentUserEmail);
+  return { name: otherUserEmail, otherUserEmail, uid: chat.uid };
 };
 
 
@@ -75,8 +75,8 @@ export const fetchChatsById = async (chatUids, { currentUserEmail }) => {
   chatSnapshots.forEach(s => {
     const chat = s.val();
     const emails = Object.values(chat.members);
-    const chatName = emails.find(email => email !== currentUserEmail);
-    res[chat.uid] = { name: chatName, otherUserEmail: chatName, uid: chat.uid };
+    const otherUserEmail = emails.find(email => email !== currentUserEmail);
+    res[chat.uid] = { name: otherUserEmail, otherUserEmail, uid: chat.uid };
   });
 
   return res;

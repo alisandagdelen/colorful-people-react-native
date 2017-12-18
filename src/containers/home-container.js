@@ -2,12 +2,13 @@ import { connect } from 'react-redux';
 import Home from '../components/home/index';
 import { bindActionCreators } from 'redux';
 import { actions } from '../actions/index';
-import { activeChatsSelector } from "../selectors/chat-selector";
+import { activeChatsSelector, otherUserEmailSelector } from "../selectors/chat-selector";
 
 
 function mapStateToProps(state) {
   return {
-    chats: activeChatsSelector(state)
+    chats: activeChatsSelector(state),
+    otherUserEmail: otherUserEmailSelector(state),
   }
 }
 

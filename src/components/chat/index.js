@@ -5,7 +5,8 @@ import styles from './styles';
 export default class Home extends React.Component {
 
   sendMessage() {
-    this.props.addMessage(this.props.currentChat, this.props.typing, this.props.currentUserEmail)
+    const { currentChatId, typing, currentUserEmail, otherUserEmail } = this.props;
+    this.props.addMessage(currentChatId, typing, currentUserEmail, otherUserEmail);
   }
 
   renderItem({item}) {

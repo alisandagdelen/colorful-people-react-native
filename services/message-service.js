@@ -1,10 +1,10 @@
 import firebase from '../firebase/index';
 
-export const createMessage = async (chatUid, sender, content) => {
+export const createMessage = async (chatUid, sender, to, content) => {
   const messagesRef = firebase.database().ref(`messages`);
   const newMessageRef = messagesRef.push();
   const key = newMessageRef.key;
-  const message = { key, sender, content, chatUid };
+  const message = { key, sender, to, content, chatUid };
 
   await newMessageRef.set(message);
   return message

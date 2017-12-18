@@ -6,7 +6,7 @@ export default class Home extends React.Component {
 
   renderItem({ item }) {
     const onButtonPressed = () => {
-      this.props.selectChat(item.uid);
+      this.props.selectChat(item.uid, item.otherUserEmail);
       this.props.navigation.navigate('Chat');
     };
 

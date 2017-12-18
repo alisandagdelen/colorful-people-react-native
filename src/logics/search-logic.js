@@ -55,7 +55,7 @@ export const startChat = createLogic({
   async process({ action, getState }, dispatch, done) {
     try {
       const { uid, email } = getState().users;
-      const exists = await chatService.chatExists(uid, email, action.payload.userEmail);
+      const exists = await chatService.chatExists(uid, email, action.payload.otherUserEmail);
 
       if (exists) {
         throw new Error('This user already exists in your list.')
@@ -69,7 +69,7 @@ export const startChat = createLogic({
       );
 
       dispatch(actions.search.startChatSuccess(chatData));
-      dispatch(actions.chat._selectChat(chatData.uid));
+      dispatch(actions.chat._selectChat(chatData.uid, action.payload.otherUserEmail));
       dispatch(actions.nav.navigateToChat());
       done()
     }

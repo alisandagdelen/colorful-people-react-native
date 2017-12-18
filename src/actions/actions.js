@@ -6,9 +6,9 @@ export default {
     fetchMessagesFailure: { arguments: ['err'] },
 
     _selectChat: {
-      arguments: ['uid'],
+      arguments: ['uid', 'otherUserEmail'],
       dispatch: {
-        selected      : { argumentIndices: [0] },
+        selected      : { argumentIndices: [0, 1] },
         fetchMessages : { argumentIndices: [0] },
       }
     },
@@ -19,7 +19,7 @@ export default {
 
   message: {
     setTyping         : { arguments: ['text'] },
-    addMessage        : { arguments: ['chatUid', 'content', 'sender'] },
+    addMessage        : { arguments: ['chatUid', 'content', 'sender', 'to'] },
     addMessageSuccess : { arguments: ['chatUid', 'message'] },
     startListening    : { },
   },
@@ -52,7 +52,7 @@ export default {
     selectColor:      { arguments: ['color'] },
     changeColorId:    { arguments: ['text'] },
     foundByColorId:   { arguments: ['data'] },
-    startChat:        { arguments: ['userUid', 'userEmail'] },
+    startChat:        { arguments: ['userUid', 'otherUserEmail'] },
     startChatSuccess: { arguments: ['chatData'] },
   },
 

@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { actions } from '../actions/index';
 import { currentChatMessagesSelector, messagesSelector, typingSelector } from "../selectors/message-selector";
 import { currentUserUidSelector, currentUserEmailSelector } from "../selectors/user-selector";
-import { currentChatSelector } from "../selectors/chat-selector";
+import { currentChatIdSelector, otherUserEmailSelector } from "../selectors/chat-selector";
 
 
 function mapStateToProps(state) {
@@ -12,9 +12,10 @@ function mapStateToProps(state) {
     chatMessages: currentChatMessagesSelector(state),
     messages: messagesSelector(state),
     typing: typingSelector(state),
-    currentChat: currentChatSelector(state),
+    currentChatId: currentChatIdSelector(state),
     currentUserUid: currentUserUidSelector(state),
     currentUserEmail: currentUserEmailSelector(state),
+    otherUserEmail: otherUserEmailSelector(state),
   }
 }
 
