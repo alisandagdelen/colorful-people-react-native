@@ -33,7 +33,7 @@ export const observeChatMessagesLogic = createLogic({
   latest: true,
   warnTimeout: 0,
 
-  process({ action }, dispatch) {
+  process({ action }, dispatch, done) {
     try {
       observeChatMessages(action.payload.uid, message => {
         dispatch(fetchMessageSuccess(action.payload.uid, message.val()),

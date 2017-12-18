@@ -2,7 +2,11 @@ import firebase from '../firebase/index'
 
 
 export const observeChatMessages = (chatUid, handler) => {
-  return firebase.database().ref(`messages/${chatUid}`).on('child_added', handler)
+  const messagesRef = firebase.database().ref(`messages`);
+  return messagesRef
+    .orderByChild('chatUid')
+    .equalTo(chatUid)
+    .on('child_added', handler)
 };
 
 
