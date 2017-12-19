@@ -65,7 +65,7 @@ export const startChat = createLogic({
         uid,
         email,
         action.payload.userUid,
-        action.payload.userEmail,
+        action.payload.otherUserEmail,
       );
 
       dispatch(actions.search.startChatSuccess(chatData));

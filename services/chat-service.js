@@ -43,6 +43,7 @@ export const startChat = async (currentUserUid, currentUserEmail, otherUserUid, 
   await firebase.database().ref().update(updates);
 
   chatData.otherUserEmail = otherUserEmail;
+  chatData.name = otherUserEmail;
   return chatData;
 };
 
