@@ -1,7 +1,21 @@
-import { types } from '../actions/index'
+// @flow
 
-const data___ = {
-  ['keyOfChat']: { 'messageKey': Array }
+import { get } from 'lodash';
+import { types } from '../actions/index';
+import type { actionType } from '../flow-types';
+
+
+type initialStateType = {
+  typing: string,
+  data: {
+    [chatId: string]: Array<{
+      chatUid: string,
+      content: string,
+      key: string,
+      sender: string,
+      to: string
+    }>
+  },
 };
 
 const initialState = {
@@ -9,24 +23,25 @@ const initialState = {
   data: {},
 };
 
-const addMessage = (prevState, { chatUid, message }) => {
+const addMessage = (prevState: initialStateType, { chatUid, message }) => {
   const { data } = prevState;
 
-  const newChat = Object.assign([], data[chatUid]);
+  const newChat = [...data[chatUid]];
   newChat.push(message);
 
   return { ...data, [chatUid]: newChat };
 };
 
 
-export default function (state = initialState, { type, payload }) {
-  switch (type) {
+export default function (state: initialStateType = initialState, action: actionType) {
+  const payload = get(action, 'payload', {});
+
+  switch (action.type) {
 
     case types.MESSAGE_SET_TYPING:
       return { ...state, typing: payload.text };
 
     case types.MESSAGE_ADD_MESSAGE_SUCCESS:
-      return state;
       return {
         ...state,
         data: addMessage(state, payload)
@@ -40,7 +55,7 @@ export default function (state = initialState, { type, payload }) {
 
     case types.CHAT_FETCH_MESSAGE_SUCCESS:
       const newMessages = state.data[payload.name] ? [...state.data[payload.name]] : [];
-      if (!newMessages.find(m => m.key === payload.message.key)) {
+      if (!newMessages.find((m: Object) => m.key === payload.message.key)) {
         newMessages.push(payload.message);
       }
       return { ...state, data: { ...state.data, [payload.name]: newMessages } };

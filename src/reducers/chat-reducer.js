@@ -1,28 +1,46 @@
-import { types } from '../actions/index'
+// @flow
 
-const initialState = {
+import { get } from 'lodash';
+import { types } from '../actions/index';
+import type { actionType } from '../flow-types';
+
+type initialStateType = {
+  currentChatId: ?string,
+  otherUserEmail: ?string,
+  data: {
+    [chatId: string]: {
+      name: string,
+      otherUserEmail: string,
+      uid: string
+    }
+  },
+};
+
+const initialState: initialStateType = {
   currentChatId: null,
   otherUserEmail: null,
   data: {},
 };
 
-export default function(state = initialState, action) {
-  switch(action.type) {
+export default function (state: initialStateType = initialState, action: actionType) {
+  const payload = get(action, 'payload', {});
+
+  switch (action.type) {
 
     case types.USER_FETCH_CHATS_SUCCESS:
-      return { ...state, data: action.payload.data };
+      return { ...state, data: payload.data };
 
     case types.USER_FETCH_CHAT_SUCCESS:
       return {
         ...state,
-        data: { ...state.data, [action.payload.data.uid]: action.payload.data }
+        data: { ...state.data, [payload.data.uid]: payload.data }
       };
 
     case types.CHAT_SELECTED:
       return {
         ...state,
-        currentChatId: action.payload.uid,
-        otherUserEmail: action.payload.otherUserEmail
+        currentChatId: payload.uid,
+        otherUserEmail: payload.otherUserEmail
       };
 
     case types.SEARCH_START_CHAT_SUCCESS:
@@ -30,7 +48,7 @@ export default function(state = initialState, action) {
         ...state,
         data: {
           ...state.data,
-          [action.payload.chatData.uid]: { ...action.payload.chatData }
+          [payload.chatData.uid]: { ...payload.chatData }
         }
       };
 
