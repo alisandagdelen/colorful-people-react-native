@@ -1,4 +1,18 @@
-import { types } from '../actions/index'
+// @flow
+
+import { get } from 'lodash';
+import { types } from '../actions/index';
+import type { actionType } from '../flow-types';
+
+type initialStateType = {
+  email: string,
+  authorized: boolean,
+  uid: string,
+  colorId: string,
+  chats: {
+    [chatId: ?string]: boolean
+  },
+};
 
 const initialState = {
   email: '',
@@ -8,7 +22,8 @@ const initialState = {
   chats: {},
 };
 
-export default function(state = initialState, action) {
+export default function(state: initialStateType = initialState, action: actionType) {
+  const payload = get(action, 'payload', {});
 
   switch (action.type) {
 
@@ -17,10 +32,10 @@ export default function(state = initialState, action) {
       return {
         ...state,
         authorized:true,
-        email: action.payload.data.email,
-        chats: action.payload.data.chats,
-        uid: action.payload.data.uid,
-        colorId: action.payload.data.colorId
+        email: payload.data.email,
+        chats: payload.data.chats,
+        uid: payload.data.uid,
+        colorId: payload.data.colorId
       };
 
     default:
