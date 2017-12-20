@@ -23,15 +23,6 @@ const initialState = {
   data: {},
 };
 
-const addMessage = (prevState: initialStateType, { chatUid, message }) => {
-  const { data } = prevState;
-
-  const newChat = [...data[chatUid]];
-  newChat.push(message);
-
-  return { ...data, [chatUid]: newChat };
-};
-
 
 export default function (state: initialStateType = initialState, action: actionType) {
   const payload = get(action, 'payload', {});
@@ -42,10 +33,7 @@ export default function (state: initialStateType = initialState, action: actionT
       return { ...state, typing: payload.text };
 
     case types.MESSAGE_ADD_MESSAGE_SUCCESS:
-      return {
-        ...state,
-        data: addMessage(state, payload)
-      };
+      return state;
 
     case types.CHAT_FETCH_MESSAGES_SUCCESS:
       return {
