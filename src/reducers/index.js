@@ -8,7 +8,7 @@ import nav from './nav-reducer';
 import search from './search-reducer';
 
 const colors = () => {
- return {
+  return {
     0: 'black',
     1: 'green',
     2: 'yellow',
@@ -24,7 +24,7 @@ const colors = () => {
     'blue': 5,
     'purple': 6,
   };
-}
+};
 
 const rootReducer = combineReducers({
   messages,
