@@ -1,3 +1,4 @@
+import { Font } from 'expo';
 import configureStore from './store/configure-store';
 import React from 'react'
 import { Provider } from 'react-redux';
@@ -17,7 +18,7 @@ export default class extends React.Component {
   }
 
   async componentWillMount() {
-    await Expo.Font.loadAsync({
+    await Font.loadAsync({
       Roboto: require("native-base/Fonts/Roboto.ttf"),
       Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
       Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf")
