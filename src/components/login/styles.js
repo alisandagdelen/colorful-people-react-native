@@ -2,10 +2,12 @@ import { StyleSheet } from 'react-native';
 
 export default  StyleSheet.create({
   primaryButton: {
-    margin: 10,
-    padding: 15,
+    margin: 20,
     alignSelf:'center',
-    backgroundColor:"blue",
-    width:150
   },
+  border: {
+    borderBottomColor: '#47315a',
+    borderBottomWidth: 2,
+    padding: 20
+  }
 });

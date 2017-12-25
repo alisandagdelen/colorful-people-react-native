@@ -7,14 +7,12 @@ class Login extends React.Component {
   render() {
     return (
       <Container style={{backgroundColor: 'white'}}>
-
         <Content>
           <List>
             <ListItem>
               <InputGroup>
                 <Icon name="ios-person" style={{ color: '#0A69FE' }} />
                 <Input
-                  value={this.props.username}
                   onChangeText={text => this.props.changeUsername(text)}
                   placeholder={"Email Address"} />
               </InputGroup>
@@ -23,18 +21,18 @@ class Login extends React.Component {
               <InputGroup>
                 <Icon name="ios-unlock" style={{ color: '#0A69FE' }} />
                 <Input
-                  value={this.props.password}
                   onChangeText={text => this.props.changePassword(text)}
                   secureTextEntry={true}
                   placeholder={"Password"} />
               </InputGroup>
             </ListItem>
           </List>
-          <Button onPress={() => this.props.signIn(this.props.username, this.props.password)}
+          <Button rounded success onPress={() => this.props.signIn(this.props.username, this.props.password)}
                   style={styles.primaryButton} >
             <Text>Login</Text>
           </Button>
-          <Button onPress={() => this.props.navigation.navigate('Signup')} style={styles.primaryButton}>
+
+          <Button Button transparent dark onPress={() => this.props.navigation.navigate('Signup')} style={styles.primaryButton}>
             <Text>New to here?</Text>
           </Button>
         </Content>
