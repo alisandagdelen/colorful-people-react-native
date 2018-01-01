@@ -16,6 +16,7 @@
   "scripts": {
     "devtools": "react-devtools",
     "start": "react-native-scripts start",
+    "startWithDebugger": "REACT_DEBUGGER=\"unset ELECTRON_RUN_AS_NODE && open -g 'rndebugger://set-debugger-loc?port=19001' ||\" npm start",
     "eject": "react-native-scripts eject",
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
