@@ -1,6 +1,6 @@
 {
   "name": "colorful-react-native",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "private": true,
   "devDependencies": {
     "eslint": "4.14.0",
