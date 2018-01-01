@@ -1,4 +1,5 @@
 import firebase from '../firebase/index';
+import { getDateRelativeToServer } from "./helpers";
 
 export const fetchMessages = async (chatUid) => {
   const messagesRef = firebase.database().ref(`messages/${chatUid}`);
@@ -26,25 +27,57 @@ export const chatExists = async (currentUserUid, currentUserEmail, otherUserEmai
 
 
 export const startChat = async (currentUserUid, currentUserEmail, otherUserUid, otherUserEmail) => {
+
   const newChatRef = firebase.database().ref('chats').push();
-  const chatData = {
-    uid: newChatRef.key,
-    members: {
-      [currentUserUid]: currentUserEmail,
-      [otherUserUid]: otherUserEmail,
-    }
+
+  const createChat = async () => {
+    const chatData = {
+      uid: newChatRef.key,
+      members: {
+        [currentUserUid]: currentUserEmail,
+        [otherUserUid]: otherUserEmail,
+      },
+      createdAt: firebase.database.ServerValue.TIMESTAMP
+    };
+
+    const updates = {};
+    updates[`/chats/${newChatRef.key}`] = chatData;
+
+    updates[`/users/${currentUserUid}/chats/${newChatRef.key}`] = {
+      createdAt: firebase.database.ServerValue.TIMESTAMP
+    };
+    updates[`/users/${otherUserUid}/chats/${newChatRef.key}`] = {
+      createdAt: firebase.database.ServerValue.TIMESTAMP
+    };
+
+    await firebase.database().ref().update(updates);
+    return chatData;
   };
 
-  const updates = {};
-  updates[`/chats/${newChatRef.key}`] = chatData;
-  updates[`/users/${currentUserUid}/chats/${newChatRef.key}`] = true;
-  updates[`/users/${otherUserUid}/chats/${newChatRef.key}`] = true;
+  const createUserChat = async (userId, chatId) => {
+    const userChatsRef = firebase.database().ref(`user_chats`);
+    const createdAt = await getDateRelativeToServer();
+    await userChatsRef.child(userId).set({ [`${chatId}`]: { createdAt } });
+  };
 
-  await firebase.database().ref().update(updates);
+  const chatData = await createChat();
+  await createUserChat(currentUserUid, newChatRef.key);
 
   chatData.otherUserEmail = otherUserEmail;
   chatData.name = otherUserEmail;
   return chatData;
+};
+
+
+export const fetchUserChatIds = async (userId) => {
+  const chatIds = await firebase.database().ref(`users/${userId}/chats`).once('value');
+  return chatIds.val();
+};
+
+
+export const fetchUserChats = async (userId, { currentUserEmail }) => {
+  const chatIds = await fetchUserChatIds(userId);
+  return await fetchChatsById(chatIds, { currentUserEmail })
 };
 
 
@@ -89,5 +122,6 @@ export default {
   fetchMessages,
   fetchChatsById,
   fetchChatById,
+  fetchUserChats,
   chatExists,
 };

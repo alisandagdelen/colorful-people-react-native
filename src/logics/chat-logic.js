@@ -18,7 +18,6 @@ export const observeChatMessagesLogic = createLogic({
       };
 
       observeChatMessages(action.payload.uid, handler);
-      done();
     }
 
     catch (err) {
