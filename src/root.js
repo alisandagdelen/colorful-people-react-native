@@ -4,6 +4,8 @@ import React from 'react'
 import { Provider } from 'react-redux';
 import AppNavigator from './navigations/app-navigator';
 import { Root } from 'native-base';
+import { AsyncStorage } from 'react-native';
+import { actions } from './actions';
 
 console.ignoredYellowBox = ['Remote debugger'];
 const store = configureStore();
@@ -15,6 +17,18 @@ export default class extends React.Component {
     this.state = {
       isReady: false
     };
+  }
+
+  // persist login
+  async componentDidMount() {
+    const userData = await AsyncStorage.getItem('userData');
+
+    if (userData) {
+      const data = JSON.parse(userData);
+      store.dispatch(actions.user.signInSuccess(data));
+      store.dispatch(actions.user.fetchChats(data.chats));
+      store.dispatch(actions.nav.resetToHome());
+    }
   }
 
   async componentWillMount() {

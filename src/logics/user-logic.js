@@ -4,26 +4,6 @@ import chatService from '../../services/chat-service';
 import { showToast } from "../helpers/index";
 import { observeChats } from "../../observers/chat-observer";
 
-// export const fetchChatsLogic = createLogic({
-
-//   type: types.USER_FETCH_CHATS,
-//   latest: true,
-//
-//   async process({ getState }, dispatch, done) {
-//     try {
-//       const { chats, email } = getState().users;
-//       const chatUids = Object.keys(chats || {});
-//       const data = await chatService.fetchChatsById(chatUids, { currentUserEmail: email });
-//       dispatch(actions.user.fetchChatsSuccess(data));
-//       done();
-//     }
-//
-//     catch (err) {
-//       showToast(err.message);
-//       done(err);
-//     }
-//   }
-// });
 
 export const observeChatsLogic = createLogic({
 
@@ -31,18 +11,18 @@ export const observeChatsLogic = createLogic({
   latest: true,
   warnTimeout: 0,
 
-  process({ getState }, dispatch) {
+  async process({ getState }, dispatch, done) {
     const { uid, email } = getState().users;
+
     try {
-      observeChats(uid, async (chat) => {
+      await observeChats(uid, async (chat) => {
         const data = await chatService.fetchChatById(chat.key, { currentUserEmail: email });
-        dispatch(actions.user.fetchChatSuccess(data),
-          { allowMore: true })
+        dispatch(actions.user.fetchChatSuccess(data), { allowMore: true })
       });
     }
 
     catch (err) {
-      showToast(err.message);
+      showToast(err);
       done(err);
     }
   }
