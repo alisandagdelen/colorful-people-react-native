@@ -16,6 +16,7 @@
   "scripts": {
     "devtools": "react-devtools",
     "start": "react-native-scripts start",
+    "startWithDebugger": "REACT_DEBUGGER=\"unset ELECTRON_RUN_AS_NODE && open -g 'rndebugger://set-debugger-loc?port=19001' ||\" npm start",
     "eject": "react-native-scripts eject",
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
@@ -39,6 +40,7 @@
     "react-navigation-props-mapper": "0.1.2",
     "react-redux": "5.0.6",
     "redux": "3.7.2",
+    "redux-devtools-extension": "^2.13.2",
     "redux-logger": "3.0.6",
     "redux-logic": "0.12.3",
     "redux-thunk": "2.2.0",

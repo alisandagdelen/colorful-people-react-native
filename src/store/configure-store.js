@@ -1,4 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import allReducers from '../reducers';
 import { createLogger } from 'redux-logger';
 import thunk from 'redux-thunk';
@@ -9,7 +10,7 @@ import { createLogicMiddleware } from 'redux-logic';
 const reduxLogicDeps = { firebase };
 const logicMiddleware = createLogicMiddleware(logicArray, reduxLogicDeps);
 
-const enhancer = compose(
+const enhancer = composeWithDevTools(
   applyMiddleware(thunk, logicMiddleware, createLogger()),
 );
 
