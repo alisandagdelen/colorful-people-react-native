@@ -21,7 +21,8 @@ export default class extends React.Component {
 
   // persist login
   async componentDidMount() {
-    const userData = await AsyncStorage.getItem('userData');
+    // const userData = await AsyncStorage.getItem('userData');
+    const userData = null;
 
     if (userData) {
       const data = JSON.parse(userData);
