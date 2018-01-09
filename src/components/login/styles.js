@@ -1,11 +1,26 @@
 import { StyleSheet } from 'react-native';
 
 export default  StyleSheet.create({
-  primaryButton: {
-    margin: 10,
-    padding: 15,
-    alignSelf:'center',
-    backgroundColor:"blue",
-    width:150
+  logo: {
+  	alignSelf:'center',
+  	margin: 30,
   },
+  primaryButton: {
+    margin: 13,
+    marginTop: 30,
+  },
+  facebookButton : {
+  	marginTop:120,
+  	padding: 10,
+  	alignSelf: 'center',
+  	backgroundColor: '#3B5998',
+  },
+  footerText : {
+  	alignSelf: 'center',
+  	color: '#FF6265',
+  	marginTop: 40
+  },
+  signUp : {
+  	alignSelf: 'center',
+  }
 });
