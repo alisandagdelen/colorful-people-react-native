@@ -3,7 +3,12 @@ import { StyleSheet } from 'react-native'
 export default  StyleSheet.create({
   container: {
     backgroundColor: '#fff',
-    flex: 1
+    flex: 1,
+  },
+  contentContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'space-between'
   },
   logo: {
   	alignSelf: 'center',
@@ -13,9 +18,7 @@ export default  StyleSheet.create({
     margin: 13,
   },
   buttonsContainer: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    alignItems: 'center'
+    height: 100
   },
   facebookButton: {
   	padding: 10,
@@ -26,7 +29,6 @@ export default  StyleSheet.create({
   footerText: {
   	alignSelf: 'center',
   	color: '#FF6265',
-  	marginTop: 40,
   },
   signUp: {
   	alignSelf: 'center',
