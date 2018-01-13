@@ -70,7 +70,7 @@ class Login extends React.Component {
             </Button>
 
 
-            <Text style={styles.footerText}>Don't Have an Account</Text>
+            <Text style={styles.footerText}>Don't Have an Account?</Text>
 
             <Button onPress={() => this.props.navigation.navigate('Signup')}
                     transparent
