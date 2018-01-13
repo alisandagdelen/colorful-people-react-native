@@ -17,3 +17,5 @@ const endEditing = () => {
         type: END_EDITING,  
     }
 };
+
+export {profileSelected, beginEditing, endEditing};
