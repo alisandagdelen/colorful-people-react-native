@@ -55,7 +55,11 @@ export default {
     startChat:        { arguments: ['userUid', 'otherUserEmail'] },
     startChatSuccess: { arguments: ['chatData'] },
   },
-
+  
+  profile: {
+    select: {},
+    navigateToChat: {},
+  },
 
   nav: {
     resetToHome: {},
