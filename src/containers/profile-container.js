@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Profile from '../components/login/index';
+import Profile from '../components/profile/index';
 import { bindActionCreators } from 'redux';
 import * as actions from '../actions/actionCreators/index';
 
