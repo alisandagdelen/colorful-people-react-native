@@ -10,9 +10,20 @@ export const getUserInfo = async (uid: string) => {
 
 const saveCredentialsToAsyncStorage = async (username: string, password: string, userData: Object) => {
   const credential = firebase.auth.EmailAuthProvider.credential(username, password);
+  let stringifiedUserData, stringifiedCredential;
 
-  await AsyncStorage.setItem('userData', JSON.stringify(userData));
-  await AsyncStorage.setItem('credential', credential);
+
+  try {
+    stringifiedUserData = JSON.stringify(userData);
+    stringifiedCredential = JSON.stringify(credential);
+  }
+
+  catch (err) {
+    throw new Error('UserService: saveCredentialsToAsyncStorage: Could not stringify data');
+  }
+
+  await AsyncStorage.setItem('userData', stringifiedUserData);
+  await AsyncStorage.setItem('credential', stringifiedCredential);
 };
 
 
