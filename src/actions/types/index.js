@@ -1,1 +1,3 @@
 export const PROFILE_SELECT = "PROFILE_SELECT";
+export const BEGIN_EDITING = "BEGIN_EDITING";
+export const END_EDITING = "END_EDITING";
