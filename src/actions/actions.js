@@ -58,9 +58,10 @@ export default {
   
   profile: {
     select: {},
-    navigateToChat: {},
+    beginEditing: {},
+    endEditing: {arguments: ['data']},
   },
-
+  
   nav: {
     resetToHome: {},
     navigateToChat: {},
