@@ -1,11 +1,19 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native'
 
-export default  StyleSheet.create({
-  primaryButton: {
-    margin: 10,
-    padding: 15,
-    alignSelf:'center',
-    backgroundColor:"blue",
-    width:150
+export default StyleSheet.create({
+  container: {
+    backgroundColor: '#fff',
+    flex: 1
   },
+  logo: {
+    alignSelf: 'center',
+    margin: 20,
+  },
+  primaryButton: {
+    margin: 13,
+  },
+  loginForm: {
+    flex: 1,
+    marginTop: 20
+  }
 });
