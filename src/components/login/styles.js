@@ -1,36 +1,38 @@
 import { StyleSheet } from 'react-native'
 
-export default  StyleSheet.create({
+export default StyleSheet.create({
   container: {
     backgroundColor: '#fff',
-    flex: 1,
-  },
-  contentContainer: {
-    flex: 1,
-    flexDirection: 'column',
-    justifyContent: 'space-between'
+    flex: 1
   },
   logo: {
-  	alignSelf: 'center',
-  	margin: 20,
+    alignSelf: 'center',
+    margin: 20,
   },
   primaryButton: {
     margin: 13,
   },
   buttonsContainer: {
-    height: 100
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center'
   },
   facebookButton: {
-  	padding: 10,
-  	alignSelf: 'center',
+    padding: 10,
+    alignSelf: 'center',
     marginBottom: '5%',
-  	backgroundColor: '#3B5998',
+    backgroundColor: '#3B5998',
   },
   footerText: {
-  	alignSelf: 'center',
-  	color: '#FF6265',
+    alignSelf: 'center',
+    color: '#FF6265',
+    marginTop: 40,
   },
   signUp: {
-  	alignSelf: 'center',
+    alignSelf: 'center',
+  },
+  loginForm: {
+    flex: 1,
+    marginTop: 20
   }
-})
+});
