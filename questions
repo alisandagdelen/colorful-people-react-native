@@ -1,0 +1,5 @@
+- isChanged logic i nereye
+- state nereden geliyor, state.login.password ? login nereden ?
+- authorizedSelector(state) ün state.users.authorized tan farkı ne zaten aynı değeri dönüyor
+- bazı reducerlar payload.colorId bazıları payload.data.colorId
+- actions.beginEditing
