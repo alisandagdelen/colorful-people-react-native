@@ -1,4 +1,4 @@
-import { Header, Container, Title, Content, List, ListItem, InputGroup, Input, Icon, Text, Picker, Button } from 'native-base';
+import { Header, Container, Title, View, Thumbnail, Content, List, ListItem, InputGroup, Input, Icon, Text, Picker, Button } from 'native-base';
 import React from 'react';
 import styles from './styles'
 
@@ -9,21 +9,20 @@ class Login extends React.Component {
       <Container style={{backgroundColor: 'white'}}>
 
         <Content>
+          <View style={ styles.logo }>
+            <Thumbnail large source={{uri: 'https://images.unsplash.com/reserve/Af0sF2OS5S5gatqrKzVP_Silhoutte.jpg'}} />        
+          </View>
           <List>
             <ListItem>
               <InputGroup>
-                <Icon name="ios-person" style={{ color: '#0A69FE' }} />
                 <Input
-                  value={this.props.username}
                   onChangeText={text => this.props.changeUsername(text)}
                   placeholder={"Email Address"} />
               </InputGroup>
             </ListItem>
             <ListItem>
               <InputGroup>
-                <Icon name="ios-unlock" style={{ color: '#0A69FE' }} />
                 <Input
-                  value={this.props.password}
                   onChangeText={text => this.props.changePassword(text)}
                   secureTextEntry={true}
                   placeholder={"Password"} />
@@ -31,11 +30,32 @@ class Login extends React.Component {
             </ListItem>
           </List>
           <Button onPress={() => this.props.signIn(this.props.username, this.props.password)}
-                  style={styles.primaryButton} >
-            <Text>Login</Text>
+                  style={ styles.primaryButton }
+                  primary
+                  block
+          >
+            <Text>Sign In</Text>
           </Button>
-          <Button onPress={() => this.props.navigation.navigate('Signup')} style={styles.primaryButton}>
-            <Text>New to here?</Text>
+
+
+          <Button onPress={() => this.props.signIn(this.props.username, this.props.password)}
+                  style={ styles.facebookButton }
+                  primary
+                  block
+          >
+            <Text>Facebook Login</Text>
+          </Button>
+
+
+          <Text style={ styles.footerText }>Don't Have an Account</Text>
+
+
+
+          <Button onPress={() => this.props.navigation.navigate('Signup')}
+            transparent
+            dark
+            style={styles.signUp}>
+            <Text>Sign Up</Text>
           </Button>
         </Content>
       </Container>)
