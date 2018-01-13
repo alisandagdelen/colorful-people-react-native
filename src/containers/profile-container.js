@@ -1,25 +1,27 @@
 import { connect } from 'react-redux';
-import Login from '../profile/index';
+import Profile from '../components/login/index';
 import { bindActionCreators } from 'redux';
-import { actions } from '../actions/actionCreators/index';
-import { authorizedSelector } from "../selectors/user-selector";
+import * as actions from '../actions/actionCreators/index';
+
 
 
 function mapStateToProps(state) {
   return {
-    username: state.login.username,
-    password: state.login.password,
-    authorized: authorizedSelector(state),
+    nickname: state.profile.nickname,
+    ppUrl: state.profile.ppUrl,
+    colorId: state.profile.colorId,
+    bio: state.profile.bio,
+    updated :state.profile.bio
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
-    signIn: actions.login.apply,
-    changeUsername: actions.login.changeUsername,
-    changePassword: actions.login.changePassword
+    profileSelected: actions.profileSelected,
+    beginEditing: actions.beginEditing,
+    endEditing: actions.endEditing
   }, dispatch);
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(Profile)
