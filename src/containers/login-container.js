@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Login from '../components/login/index';
 import { bindActionCreators } from 'redux';
@@ -15,6 +16,7 @@ function mapStateToProps(state) {
   }
 }
 
+
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     signIn: actions.login.apply,
@@ -22,6 +24,18 @@ function mapDispatchToProps(dispatch) {
     changePassword: actions.login.changePassword
   }, dispatch);
 }
+
+
+Login.propTypes = {
+  username: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
+  authorized: PropTypes.bool.isRequired,
+  signInButtonText: PropTypes.string.isRequired,
+
+  signIn: PropTypes.func.isRequired,
+  changeUsername: PropTypes.func.isRequired,
+  changePassword: PropTypes.func.isRequired,
+};
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login)
