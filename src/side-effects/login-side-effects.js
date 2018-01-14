@@ -6,23 +6,16 @@ let signInButtonInterval;
 
 export const signInButtonLoading = (dispatch) => {
   const intervalTime = 300;
-  let callCount = 0;
+  let callCount = 1, callLimit = 4;
 
   const callback = () => {
 
-    if (callCount > 2) {
-      callCount = 0;
+    if (callCount > callLimit) {
+      callCount = 1;
     }
 
-    let text = '.';
-
-    if (callCount === 1) {
-      text = '..';
-    }
-
-    if (callCount === 2) {
-      text = '...';
-    }
+    const dotsArray = new Array(callCount).fill('.');
+    const text = dotsArray.join('');
 
     dispatch(actions.login.changeSignInButtonText(text));
     callCount += 1;
