@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Chat from '../components/chat/index';
 import { bindActionCreators } from 'redux';
@@ -19,6 +20,7 @@ function mapStateToProps(state) {
   }
 }
 
+
 function mapDispatchToProps(dispatch) {
   return bindActionCreators(
     {
@@ -27,6 +29,20 @@ function mapDispatchToProps(dispatch) {
     },
     dispatch);
 }
+
+
+Chat.propTypes = {
+  chatMessages: PropTypes.array.isRequired,
+  messages: PropTypes.object.isRequired,
+  typing: PropTypes.string.isRequired,
+  currentChatId: PropTypes.string.isRequired,
+  currentUserId: PropTypes.string.isRequired,
+  currentUserEmail: PropTypes.string.isRequired,
+  otherUserEmail: PropTypes.string.isRequired,
+
+  addMessage: PropTypes.func.isRequired,
+  setTyping: PropTypes.func.isRequired,
+};
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Chat)
