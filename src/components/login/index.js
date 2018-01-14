@@ -55,7 +55,7 @@ class Login extends React.Component {
               primary
               block
             >
-              <Text>Sign In</Text>
+              <Text>{this.props.signInButtonText}</Text>
             </Button>
           </View>
 

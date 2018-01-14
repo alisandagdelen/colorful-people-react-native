@@ -3,6 +3,7 @@ import Login from '../components/login/index';
 import { bindActionCreators } from 'redux';
 import { actions } from '../actions/index';
 import { authorizedSelector } from "../selectors/user-selector";
+import { signInButtonTextSelector } from "../selectors/login-selector";
 
 
 function mapStateToProps(state) {
@@ -10,6 +11,7 @@ function mapStateToProps(state) {
     username: state.login.username,
     password: state.login.password,
     authorized: authorizedSelector(state),
+    signInButtonText: signInButtonTextSelector(state),
   }
 }
 
