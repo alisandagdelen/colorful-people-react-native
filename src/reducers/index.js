@@ -6,6 +6,7 @@ import login from './login-reducer';
 import signUp from './signup-reducer';
 import nav from './nav-reducer';
 import search from './search-reducer';
+import profile from './profile-reducer';
 
 const colors = () => {
   return {
@@ -34,7 +35,8 @@ const rootReducer = combineReducers({
   signUp,
   nav,
   search,
-  colors
+  colors,
+  profile
 });
 
 export default rootReducer

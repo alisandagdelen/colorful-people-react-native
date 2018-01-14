@@ -57,6 +57,12 @@ export default {
     startChatSuccess: { arguments: ['chatData'] },
   },
 
+  profile: {
+    select:           {},
+    beginEditing:     {},
+    endEditing:       {},
+    changeNickname:   { arguments: ['nickname'] },
+  },
 
   nav: {
     resetToHome: {},
