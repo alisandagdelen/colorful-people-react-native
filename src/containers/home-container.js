@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Home from '../components/home/index';
 import { bindActionCreators } from 'redux';
@@ -12,11 +13,20 @@ function mapStateToProps(state) {
   }
 }
 
+
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     selectChat: actions.chat._selectChat
   }, dispatch);
 }
+
+
+Home.propTypes = {
+  chats: PropTypes.object.isRequired,
+  otherUserEmail: PropTypes.string,
+
+  selectChat: PropTypes.func.isRequired,
+};
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

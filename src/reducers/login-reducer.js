@@ -6,12 +6,18 @@ import type { actionType } from '../flow-types';
 
 type initialStateType = {
   username: string,
-  password: string
+  password: string,
+  signInButtonText: string,
+};
+
+export const defaults = {
+  signInButtonText: 'Sign In'
 };
 
 const initialState = {
-  username: '@gmail.com',
-  password: '123456',
+  username: '',
+  password: '',
+  signInButtonText: defaults.signInButtonText,
 };
 
 export default function(state: initialStateType = initialState, action: actionType) {
@@ -24,6 +30,12 @@ export default function(state: initialStateType = initialState, action: actionTy
 
     case types.LOGIN_CHANGE_PASSWORD:
       return { ...state, password: payload.password };
+
+    case types.LOGIN_CHANGE_SIGN_IN_BUTTON_TEXT:
+      return { ...state, signInButtonText: payload.text };
+
+    case types.LOGIN_SUCCESS:
+      return { ...state, signInButtonText: defaults.signInButtonText };
 
     default:
       return state

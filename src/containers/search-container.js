@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Search from '../components/search/index';
 import { bindActionCreators } from 'redux';
@@ -14,6 +15,7 @@ function mapStateToProps(state) {
   }
 }
 
+
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     selectColor: actions.search.selectColor,
@@ -22,5 +24,16 @@ function mapDispatchToProps(dispatch) {
   }, dispatch);
 }
 
+
+Search.propTypes = {
+  selectedColor: PropTypes.string,
+  colorId: PropTypes.string,
+  colors: PropTypes.object,
+  foundUser: PropTypes.object,
+
+  selectColor: PropTypes.func.isRequired,
+  changeColorId: PropTypes.func.isRequired,
+  startChat: PropTypes.func.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search)

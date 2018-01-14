@@ -1,5 +1,6 @@
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Signup from '../components/signup/index';
+import SignUp from '../components/signup/index';
 import { bindActionCreators } from 'redux';
 import { actions } from '../actions/index';
 import { authorizedSelector } from "../selectors/user-selector";
@@ -13,6 +14,7 @@ function mapStateToProps(state) {
   }
 }
 
+
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     signUp: actions.signUp.apply,
@@ -22,4 +24,14 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Signup)
+SignUp.propTypes = {
+  username: PropTypes.string,
+  password: PropTypes.string,
+  authorized: PropTypes.bool.isRequired,
+
+  signUp: PropTypes.func.isRequired,
+  changeUsername: PropTypes.func.isRequired,
+  changePassword: PropTypes.func.isRequired,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp)

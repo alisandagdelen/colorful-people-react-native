@@ -42,9 +42,10 @@ export default {
 
 
   login: {
-    apply           : { arguments: ['username', 'password'] },
-    changeUsername  : { arguments: ['username'] },
-    changePassword  : { arguments: ['password'] },
+    apply                 : { arguments: ['username', 'password'] },
+    changeSignInButtonText: { arguments: ['text'] },
+    changeUsername        : { arguments: ['username'] },
+    changePassword        : { arguments: ['password'] },
   },
 
 
@@ -56,6 +57,12 @@ export default {
     startChatSuccess: { arguments: ['chatData'] },
   },
 
+  profile: {
+    select:           {},
+    beginEditing:     {},
+    endEditing:       {},
+    changeNickname:   { arguments: ['nickname'] },
+  },
 
   nav: {
     resetToHome: {},
