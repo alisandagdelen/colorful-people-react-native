@@ -1,1 +1,0 @@
-const primaryColor = '#E32581';

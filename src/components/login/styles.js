@@ -1,4 +1,5 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native';
+import { primaryColor } from '../globals/colors';
 
 export default StyleSheet.create({
   container: {
@@ -10,6 +11,7 @@ export default StyleSheet.create({
     margin: 20,
   },
   primaryButton: {
+    backgroundColor: primaryColor,
     margin: 13,
   },
   buttonsContainer: {
