@@ -4,7 +4,7 @@ import Home from '../containers/home-container'
 import Search from '../containers/search-container'
 import Profile from '../containers/profile-container'
 import { withMappedNavigationProps } from 'react-navigation-props-mapper'
-import { primaryColor } from '../components/globals/styles'
+import { primaryColor } from '../components/globals/colors'
 
 export default TabNavigator({
   Profile: {

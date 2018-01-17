@@ -1,6 +1,6 @@
 import React from 'react'
-import { FlatList } from 'react-native';
 import { Container, Content, Header, Item, Input, Icon, List, Button, ListItem, Body, Text, Left, Thumbnail, Right } from 'native-base';
+import globalStyles from '../globals/styles'
 
 export default class Home extends React.Component {
 
@@ -27,14 +27,16 @@ export default class Home extends React.Component {
   }
 
   render() {
-    return (<Container>
-      <Content>
-        <List dataArray={Object.values(this.props.chats)}
-          renderRow={this.renderItem.bind(this)}>
-        </List>
+    return (
+      <Container style={globalStyles.container}>
+        <Content>
+          <List dataArray={Object.values(this.props.chats)}
+                renderRow={this.renderItem.bind(this)}>
+          </List>
 
-      </Content>
-    </Container>);
+        </Content>
+      </Container>
+    );
   }
 }
 

@@ -1,1 +1,5 @@
-export const primaryColor = '#E32581';
+export const container = { backgroundColor: 'white' };
+
+export default {
+  container
+};
