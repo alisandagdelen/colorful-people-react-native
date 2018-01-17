@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+import { primaryColor } from '../globals/colors';
 
 export default StyleSheet.create({
   container: {
@@ -11,6 +12,7 @@ export default StyleSheet.create({
   },
   primaryButton: {
     margin: 13,
+    backgroundColor: primaryColor,
   },
   loginForm: {
     flex: 1,
