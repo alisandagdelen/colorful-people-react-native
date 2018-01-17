@@ -11,7 +11,7 @@ export default class Home extends React.Component {
     };
 
     return (
-        <ListItem avatar>
+        <ListItem avatar onPress={onButtonPressed}>
           <Left>
             <Thumbnail source={{ uri: 'https://images.unsplash.com/photo-1474552226712-ac0f0961a954?auto=format&fit=crop&w=1951&q=80' }} />
           </Left>
