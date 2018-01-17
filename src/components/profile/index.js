@@ -1,46 +1,63 @@
-import { View, Thumbnail, Header, Container, Title, Content, List, ListItem, InputGroup, Input, Icon, Text, Picker, Button } from 'native-base';
+import {
+  View,
+  Thumbnail,
+  Header,
+  Container,
+  Title,
+  Content,
+  List,
+  ListItem,
+  InputGroup,
+  Input,
+  Icon,
+  Text,
+  Picker,
+  Button
+} from 'native-base';
 import React from 'react';
-import styles from './styles'
+import styles from './styles';
+import globalStyles from '../globals/styles';
 
 class Profile extends React.Component {
 
-    render() {
-        return (
-            <Container style={{ backgroundColor: 'white' }}>
+  render() {
+    return (
+      <Container style={globalStyles.container}>
 
-                <Content>
-                    <List>
+        <Content>
+          <List>
 
-                        <View style={styles.logo}>
-                            <Thumbnail large source={{ uri: 'https://images.unsplash.com/reserve/Af0sF2OS5S5gatqrKzVP_Silhoutte.jpg' }} />
-                        </View>
+            <View style={styles.logo}>
+              <Thumbnail large
+                         source={{ uri: 'https://images.unsplash.com/reserve/Af0sF2OS5S5gatqrKzVP_Silhoutte.jpg' }}/>
+            </View>
 
-                        <ListItem>
-                            <InputGroup>
-                                <Icon name="ios-person" style={{ color: '#0A69FE' }} />
-                                <Input
-                                    value={this.props.nickname}
-                                    onChangeText={text => this.props.changeNickname(text)}
-                                    placeholder={"Email Address"} />
-                            </InputGroup>
-                        </ListItem>
-                        <ListItem>
-                            <InputGroup>
-                                <Icon name="ios-unlock" style={{ color: '#0A69FE' }} />
-                                <Input
-                                    value={this.props.bio}
-                                    onChangeText={text => this.props.bio(text)}
-                                    placeholder={"bio"} />
-                            </InputGroup>
-                        </ListItem>
-                    </List>
-                    <Button onPress={() => this.props.updated()}
-                        style={styles.primaryButton} >
-                        <Text>Login</Text>
-                    </Button>
-                </Content>
-            </Container>)
-    }
+            <ListItem>
+              <InputGroup>
+                <Icon name="ios-person" style={{ color: '#0A69FE' }}/>
+                <Input
+                  value={this.props.nickname}
+                  onChangeText={text => this.props.changeNickname(text)}
+                  placeholder={"Email Address"}/>
+              </InputGroup>
+            </ListItem>
+            <ListItem>
+              <InputGroup>
+                <Icon name="ios-unlock" style={{ color: '#0A69FE' }}/>
+                <Input
+                  value={this.props.bio}
+                  onChangeText={text => this.props.bio(text)}
+                  placeholder={"bio"}/>
+              </InputGroup>
+            </ListItem>
+          </List>
+          <Button onPress={() => this.props.updated()}
+                  style={styles.primaryButton}>
+            <Text>Login</Text>
+          </Button>
+        </Content>
+      </Container>)
+  }
 }
 
 export default Profile

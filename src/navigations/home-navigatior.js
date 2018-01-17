@@ -1,9 +1,10 @@
-import React from 'react';
-import { TabNavigator } from "react-navigation";
-import Home from '../containers/home-container';
-import Search from '../containers/search-container';
-import Profile from '../containers/profile-container';
-import { withMappedNavigationProps } from 'react-navigation-props-mapper';
+import React from 'react'
+import { TabNavigator } from 'react-navigation'
+import Home from '../containers/home-container'
+import Search from '../containers/search-container'
+import Profile from '../containers/profile-container'
+import { withMappedNavigationProps } from 'react-navigation-props-mapper'
+import { primaryColor } from '../components/globals/colors'
 
 export default TabNavigator({
   Profile: {
@@ -19,6 +20,15 @@ export default TabNavigator({
     navigationOptions: { title: 'Search' }
   },
 }, {
-  tabBarPosition: 'top'
-});
+  tabBarPosition: 'top',
+  tabBarOptions: {
+    labelStyle: {
+      fontSize: 16,
+    },
+    activeTintColor : '#fff',
+    style: {
+      backgroundColor: primaryColor,
+    }
+  }
+})
 

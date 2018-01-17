@@ -3,6 +3,7 @@ import React from 'react';
 import styles from './styles';
 import ColorCheckBox from './color-checkbox';
 import UserCard from './user-card';
+import globalStyles from '../globals/styles';
 
 class Search extends React.Component {
 
@@ -18,7 +19,7 @@ class Search extends React.Component {
 
   render() {
     return (
-      <Container style={{backgroundColor: 'white'}}>
+      <Container style={globalStyles.container}>
 
         <Header searchBar rounded>
           <Item>
