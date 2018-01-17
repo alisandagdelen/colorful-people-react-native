@@ -1,6 +1,6 @@
 import React from 'react'
 import { FlatList } from 'react-native';
-import { Container, Content, Header, Item, Input, Icon, Button, ListItem, Body, Text } from 'native-base';
+import { Container, Content, Header, Item, Input, Icon, List, Button, ListItem, Body, Text, Left, Thumbnail, Right } from 'native-base';
 
 export default class Home extends React.Component {
 
@@ -10,27 +10,32 @@ export default class Home extends React.Component {
       this.props.navigation.navigate('Chat');
     };
 
+
     return (
-        <ListItem style={{ marginLeft: 0 }}
-                  onPress={onButtonPressed}>
-            <Body>
-              <Text>{item.name}</Text>
-            </Body>
+        <ListItem avatar>
+          <Left>
+            <Thumbnail source={{ uri: 'Image URL' }} />
+          </Left>
+          <Body>
+          <Text>Kumar Pratik</Text>
+          <Text note>chat 1</Text>
+          </Body>
+          <Right>
+            <Text note>3:43 pm</Text>
+          </Right>
         </ListItem>
     );
   }
 
   render() {
-    return (
-      <Container>
-        <Content>
-          <FlatList data={Object.values(this.props.chats)}
-                    renderItem={this.renderItem.bind(this)}
-                    keyExtractor={(item) => item.uid}
-          />
-        </Content>
-      </Container>
-    );
+    return (<Container>
+      <Content>
+        <List dataArray={Object.values(this.props.chats)}
+          renderRow={this.renderItem.bind(this)}>
+        </List>
+
+      </Content>
+    </Container>);
   }
 }
 
