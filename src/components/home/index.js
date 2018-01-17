@@ -4,20 +4,19 @@ import { Container, Content, Header, Item, Input, Icon, List, Button, ListItem, 
 
 export default class Home extends React.Component {
 
-  renderItem({ item }) {
+  renderItem(item) {
     const onButtonPressed = () => {
       this.props.selectChat(item.uid, item.otherUserEmail);
       this.props.navigation.navigate('Chat');
     };
 
-
     return (
         <ListItem avatar>
           <Left>
-            <Thumbnail source={{ uri: 'Image URL' }} />
+            <Thumbnail source={{ uri: 'https://images.unsplash.com/photo-1474552226712-ac0f0961a954?auto=format&fit=crop&w=1951&q=80' }} />
           </Left>
           <Body>
-          <Text>Kumar Pratik</Text>
+          <Text>{item.name}</Text>
           <Text note>chat 1</Text>
           </Body>
           <Right>
