@@ -32,7 +32,7 @@ class Profile extends React.Component {
                 source={{ uri: this.props.ppUrl }} />
             </View>
 
-            <Text style={{ fontSize: 20, alignSelf: 'center', color: this.props.colorId, fontWeight: 'bold' }}>
+            <Text style={{ fontSize: 22, alignSelf: 'center', color: this.props.colorId, fontWeight: 'bold' }}>
               {this.props.nickname}
             </Text>
 
