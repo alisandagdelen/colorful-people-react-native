@@ -20,41 +20,38 @@ import globalStyles from '../globals/styles';
 
 class Profile extends React.Component {
 
+
   render() {
     return (
       <Container style={globalStyles.container}>
 
         <Content>
           <List>
-
             <View style={styles.logo}>
               <Thumbnail large
-                         source={{ uri: 'https://images.unsplash.com/reserve/Af0sF2OS5S5gatqrKzVP_Silhoutte.jpg' }}/>
+                source={{ uri: this.props.ppUrl }} />
             </View>
 
-            <ListItem>
-              <InputGroup>
-                <Icon name="ios-person" style={{ color: '#0A69FE' }}/>
-                <Input
-                  value={this.props.nickname}
-                  onChangeText={text => this.props.changeNickname(text)}
-                  placeholder={"Email Address"}/>
-              </InputGroup>
-            </ListItem>
-            <ListItem>
-              <InputGroup>
-                <Icon name="ios-unlock" style={{ color: '#0A69FE' }}/>
-                <Input
-                  value={this.props.bio}
-                  onChangeText={text => this.props.bio(text)}
-                  placeholder={"bio"}/>
-              </InputGroup>
-            </ListItem>
+            <Text style={{ fontSize: 20, alignSelf: 'center', color: this.props.colorId, fontWeight: 'bold' }}>
+              {this.props.nickname}
+            </Text>
+
+            <View style={{ width: 600, height: 1, backgroundColor: 'mediumpurple' }} />
+
+            <Text style={styles.titleText}>
+              {'\n'} About Me
+            </Text>
+
+            <Text style={styles.bioText}>
+              {this.props.bio}
+            </Text>
           </List>
+
           <Button onPress={() => this.props.updated()}
-                  style={styles.primaryButton}>
-            <Text>Login</Text>
+            style={{ marginTop: 40, width: '80%', alignSelf: 'center', justifyContent: 'center', backgroundColor: this.props.colorId }}>
+            <Text>Edit Profile</Text>
           </Button>
+
         </Content>
       </Container>)
   }
