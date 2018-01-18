@@ -3,15 +3,16 @@ import { connect } from 'react-redux';
 import Profile from '../components/profile/index';
 import { bindActionCreators } from 'redux';
 import { actions } from '../actions/index';
+import { nicknameSelector, ppUrlSelector, colorIdSelector, bioSelector } from "../selectors/profile-selector";
 
 
 
 function mapStateToProps(state) {
   return {
-    nickname: state.profile.nickname,
-    ppUrl: state.profile.ppUrl,
-    colorId: state.profile.colorId,
-    bio: state.profile.bio,
+    nickname: nicknameSelector(state),
+    ppUrl: ppUrlSelector(state),
+    colorId: colorIdSelector(state),
+    bio: bioSelector(state),
   }
 }
 
