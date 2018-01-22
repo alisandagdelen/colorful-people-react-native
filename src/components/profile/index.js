@@ -49,7 +49,9 @@ class Profile extends React.Component {
             </Text>
           </List>
           <View style={styles.buttonsContainer}>
-            <Button onPress={() => this.props.updated()}
+            <Button onPress={() => this.props.navigation.navigate('EditProfile')}
+                    transparent
+                    dark
               style={s.editButton}>
               <Text>Edit Profile</Text>
             </Button>
