@@ -22,35 +22,43 @@ class Profile extends React.Component {
 
 
   render() {
+    const s = styles(this.props);
+
     return (
       <Container style={globalStyles.container}>
+        <Content style={{ flex: 1 }} contentContainerStyle={{ flex: 1 }}>
 
-        <Content>
           <List>
-            <View style={styles.logo}>
+            <View style={s.logo}>
               <Thumbnail large
                 source={{ uri: this.props.ppUrl }} />
             </View>
 
-            <Text style={{ fontSize: 22, alignSelf: 'center', color: this.props.colorId, fontWeight: 'bold' }}>
+            <Text style={s.nicknameText}>
               {this.props.nickname}
             </Text>
 
-            <View style={{ width: 600, height: 1, backgroundColor: 'mediumpurple' }} />
+            <View style={s.seperatorView} />
 
-            <Text style={styles.titleText}>
+            <Text style={s.titleText}>
               {'\n'} About Me
             </Text>
 
-            <Text style={styles.bioText}>
+            <Text style={s.bioText}>
               {this.props.bio}
             </Text>
           </List>
+          <View style={styles.buttonsContainer}>
+            <Button onPress={() => this.props.updated()}
+              style={s.editButton}>
+              <Text>Edit Profile</Text>
+            </Button>
 
-          <Button onPress={() => this.props.updated()}
-            style={{ marginTop: 40, width: '80%', alignSelf: 'center', justifyContent: 'center', backgroundColor: this.props.colorId }}>
-            <Text>Edit Profile</Text>
-          </Button>
+            <Button onPress={() => this.props.updated()}
+              style={s.logoutButton}>
+              <Text>Logout</Text>
+            </Button>
+          </View>
 
         </Content>
       </Container>)

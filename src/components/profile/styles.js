@@ -1,45 +1,53 @@
 import { StyleSheet } from 'react-native';
 
-export default StyleSheet.create({
-    logo: {
-        alignSelf: 'center',
-        margin: 30,
-    },
-    beginEditButton: {
-        marginTop: 40, 
-        width: '80%',
-        alignSelf: 'center',
-        justifyContent: 'center'
-    },
-    facebookButton: {
-        marginTop: 120,
-        padding: 10,
-        alignSelf: 'center',
-        backgroundColor: '#3B5998',
-    },
-    footerText: {
-        alignSelf: 'center',
-        color: '#FF6265',
-        marginTop: 40
-    },
-    signUp: {
-        alignSelf: 'center',
-    },
-    nicknameText: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        alignSelf: 'center'
-    },
-    titleText: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        color: 'steelblue',
-        alignSelf: 'center'
-    },
-    bioText: {
-        alignSelf: 'center',
-        fontSize: 15,
-        textAlign: 'center'
-    },
+export default function (props){
 
-});
+    return StyleSheet.create({
+        logo: {
+            alignSelf: 'center',
+            margin: 30,
+        },
+        seperatorView: {
+            width: 600, 
+            height: 1, 
+            backgroundColor: 'mediumpurple' 
+        },
+        nicknameText: {
+            fontSize: 22, 
+            alignSelf: 'center', 
+            color: props.colorId, 
+            fontWeight: 'bold'
+        },
+        titleText: {
+            fontSize: 18,
+            fontWeight: 'bold',
+            color: 'steelblue',
+            alignSelf: 'center'
+        },
+        bioText: {
+            alignSelf: 'center',
+            fontSize: 15,
+            textAlign: 'center'
+        },
+        buttonsContainer: {
+            flex: 1,
+            justifyContent: 'flex-end',
+            alignItems: 'center'
+          },
+        editButton: {
+            marginTop: 40,
+            width: '80%', 
+            alignSelf: 'center', 
+            justifyContent: 'center', 
+            backgroundColor: props.colorId
+          },
+        logoutButton: {
+            marginTop: 40, 
+            width: '80%', 
+            alignSelf: 'center', 
+            justifyContent: 'center', 
+            backgroundColor: 'red'
+          },
+    
+    });
+}
