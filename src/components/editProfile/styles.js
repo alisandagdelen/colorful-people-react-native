@@ -42,13 +42,5 @@ export default function (props){
             justifyContent: 'center', 
             backgroundColor: props.colorId
           },
-        logoutButton: {
-            marginTop: 40, 
-            width: '80%', 
-            alignSelf: 'center', 
-            justifyContent: 'center', 
-            backgroundColor: 'red'
-          },
-    
     });
 }
