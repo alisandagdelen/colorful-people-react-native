@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Profile from '../components/profile/index';
 import EditProfile from '../components/editProfile/index';
 import { bindActionCreators } from 'redux';
 import { actions } from '../actions/index';
@@ -28,7 +27,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-Profile.propTypes = {
+EditProfile.propTypes = {
   nickname: PropTypes.string.isRequired,
   ppUrl: PropTypes.string.isRequired,
   colorId: PropTypes.string.isRequired,
@@ -42,4 +41,4 @@ Profile.propTypes = {
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profile)
+export default connect(mapStateToProps, mapDispatchToProps)(EditProfile)
