@@ -6,7 +6,7 @@ import Chat from '../containers/chat-container';
 import Login from '../containers/login-container';
 import Signup from '../containers/signup-container';
 import Profile from '../containers/profile-container';
-import EditProfile from '../containers/editProfile-container';
+import EditProfile from '../containers/edit-profile-container';
 import { withMappedNavigationProps } from 'react-navigation-props-mapper';
 import { addNavigationHelpers, StackNavigator } from 'react-navigation';
 import HomeNavigator from './home-navigatior'

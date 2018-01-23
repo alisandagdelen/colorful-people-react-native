@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Profile from '../components/profile/index';
-import EditProfile from '../components/editProfile/index';
+import EditProfile from '../components/edit-profile/index';
 import { bindActionCreators } from 'redux';
 import { actions } from '../actions/index';
 import { nicknameSelector, ppUrlSelector, colorIdSelector, bioSelector } from "../selectors/profile-selector";
