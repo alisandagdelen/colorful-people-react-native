@@ -62,6 +62,7 @@ export default {
     beginEditing:     {},
     endEditing:       {},
     changeNickname:   { arguments: ['nickname'] },
+    logout:           {},
   },
 
   nav: {
