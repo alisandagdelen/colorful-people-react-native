@@ -56,7 +56,7 @@ class Profile extends React.Component {
               <Text>Edit Profile</Text>
             </Button>
 
-            <Button onPress={() => this.props.updated()}
+            <Button onPress={() => this.props.logout()}
               style={s.logoutButton}>
               <Text>Logout</Text>
             </Button>

@@ -67,6 +67,7 @@ export default {
 
   nav: {
     resetToHome: {},
+    resetToLogin: {},
     navigateToChat: {},
   },
 };

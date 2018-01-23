@@ -10,6 +10,17 @@ export default function (state = initialState, action) {
 
   switch (action.type) {
 
+    case types.NAV_RESET_TO_LOGIN:
+      nextState = AppNavigator.router.getStateForAction(
+        NavigationActions.reset({
+          index: 0,
+          actions: [NavigationActions.navigate({ routeName: 'Login' })],
+          key: null
+        }),
+        state
+      );
+      break;
+
     case types.NAV_RESET_TO_HOME:
       nextState = AppNavigator.router.getStateForAction(
         NavigationActions.reset({
