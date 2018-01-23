@@ -9,9 +9,10 @@ export const profileLogic = createLogic({
   type: types.PROFILE_LOGOUT,
   latest: true,
 
-  async process({ getState }, dispatch, done) {
+  async process({ action }, dispatch, done) {
     try {
         await AsyncStorage.clear();
+        dispatch(logout());
         }
 
     catch (err) {
