@@ -20,41 +20,48 @@ import globalStyles from '../globals/styles';
 
 class Profile extends React.Component {
 
+
   render() {
+    const s = styles(this.props);
+
     return (
       <Container style={globalStyles.container}>
+        <Content style={{ flex: 1 }} contentContainerStyle={{ flex: 1 }}>
 
-        <Content>
           <List>
-
-            <View style={styles.logo}>
+            <View style={s.logo}>
               <Thumbnail large
-                         source={{ uri: 'https://images.unsplash.com/reserve/Af0sF2OS5S5gatqrKzVP_Silhoutte.jpg' }}/>
+                source={{ uri: this.props.ppUrl }} />
             </View>
 
-            <ListItem>
-              <InputGroup>
-                <Icon name="ios-person" style={{ color: '#0A69FE' }}/>
-                <Input
-                  value={this.props.nickname}
-                  onChangeText={text => this.props.changeNickname(text)}
-                  placeholder={"Email Address"}/>
-              </InputGroup>
-            </ListItem>
-            <ListItem>
-              <InputGroup>
-                <Icon name="ios-unlock" style={{ color: '#0A69FE' }}/>
-                <Input
-                  value={this.props.bio}
-                  onChangeText={text => this.props.bio(text)}
-                  placeholder={"bio"}/>
-              </InputGroup>
-            </ListItem>
+            <Text style={s.nicknameText}>
+              {this.props.nickname}
+            </Text>
+
+            <View style={s.seperatorView} />
+
+            <Text style={s.titleText}>
+              {'\n'} About Me
+            </Text>
+
+            <Text style={s.bioText}>
+              {this.props.bio}
+            </Text>
           </List>
-          <Button onPress={() => this.props.updated()}
-                  style={styles.primaryButton}>
-            <Text>Login</Text>
-          </Button>
+          <View style={styles.buttonsContainer}>
+            <Button onPress={() => this.props.navigation.navigate('EditProfile')}
+                    transparent
+                    dark
+              style={s.editButton}>
+              <Text>Edit Profile</Text>
+            </Button>
+
+            <Button onPress={() => this.props.logout()}
+              style={s.logoutButton}>
+              <Text>Logout</Text>
+            </Button>
+          </View>
+
         </Content>
       </Container>)
   }

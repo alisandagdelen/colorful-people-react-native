@@ -62,10 +62,13 @@ export default {
     beginEditing:     {},
     endEditing:       {},
     changeNickname:   { payload: ['nickname'] },
+    changeNickname:   { arguments: ['nickname'] },
+    logout:           {},
   },
 
   nav: {
     resetToHome: {},
+    resetToLogin: {},
     navigateToChat: {},
   },
 };
