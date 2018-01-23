@@ -24,6 +24,7 @@ function mapDispatchToProps(dispatch) {
     beginEditing: actions.profile.beginEditing,
     endEditing: actions.profile.endEditing,
     changeNickname: actions.profile.changeNickname,
+    logout: actions.profile.logout,
   }, dispatch);
 }
 
@@ -37,6 +38,7 @@ Profile.propTypes = {
   profileSelected: PropTypes.func,
   beginEditing: PropTypes.func.isRequired,
   endEditing: PropTypes.func.isRequired,
+  logout: PropTypes.func.isRequired,
 };
 
 

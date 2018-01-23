@@ -4,6 +4,7 @@ import * as loginLogics from './login-logic';
 import * as signupLogics from './signup-logic';
 import * as searchLogics from './search-logic';
 import * as userLogics from './user-logic';
+import * as profileLogics from './profile-logic';
 
 export default [
   ...Object.values(chatLogics),
@@ -12,4 +13,5 @@ export default [
   ...Object.values(signupLogics),
   ...Object.values(searchLogics),
   ...Object.values(userLogics),
+  ...Object.values(profileLogics),
 ];
