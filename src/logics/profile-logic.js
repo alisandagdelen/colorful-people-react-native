@@ -13,6 +13,7 @@ export const profileLogic = createLogic({
     try {
         await AsyncStorage.clear();
         dispatch(logout());
+        done();
         }
 
     catch (err) {
