@@ -117,12 +117,11 @@ const styles = StyleSheet.create({
   },
   tabContainer: {
     flexDirection: 'row',
-    height: 40,
+    height: 50,
     backgroundColor: 'white',
   },
   tabButton: {
     fontFamily: 'AvenirNext',
-    fontWeight: 'bold',
     color: primaryColor,
   },
   sampleText: {
