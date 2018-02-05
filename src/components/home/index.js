@@ -1,6 +1,22 @@
 import React from 'react'
-import { Container, Content, Header, Item, Input, Icon, List, Button, ListItem, Body, Text, Left, Thumbnail, Right } from 'native-base';
+import {
+  Container,
+  Content,
+  Header,
+  Item,
+  Input,
+  Icon,
+  List,
+  Button,
+  ListItem,
+  Body,
+  Text,
+  Left,
+  Thumbnail,
+  Right
+} from 'native-base';
 import globalStyles from '../globals/styles'
+import styles from './styles';
 
 export default class Home extends React.Component {
 
@@ -11,18 +27,19 @@ export default class Home extends React.Component {
     };
 
     return (
-        <ListItem avatar onPress={onButtonPressed}>
-          <Left>
-            <Thumbnail source={{ uri: 'https://images.unsplash.com/photo-1474552226712-ac0f0961a954?auto=format&fit=crop&w=1951&q=80' }} />
-          </Left>
-          <Body>
+      <ListItem avatar onPress={onButtonPressed}>
+        <Left>
+          <Thumbnail style={styles.avatar}
+                     source={{ uri: 'https://images.unsplash.com/photo-1474552226712-ac0f0961a954?auto=format&fit=crop&w=90&q=70' }}/>
+        </Left>
+        <Body>
           <Text>{item.name}</Text>
           <Text note>chat 1</Text>
-          </Body>
-          <Right>
-            <Text note>3:43 pm</Text>
-          </Right>
-        </ListItem>
+        </Body>
+        <Right>
+          <Text note>3:43 pm</Text>
+        </Right>
+      </ListItem>
     );
   }
 
@@ -33,7 +50,6 @@ export default class Home extends React.Component {
           <List dataArray={Object.values(this.props.chats)}
                 renderRow={this.renderItem.bind(this)}>
           </List>
-
         </Content>
       </Container>
     );
