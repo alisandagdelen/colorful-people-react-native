@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Profile from '../components/profile/index';
 import EditProfile from '../components/edit-profile/index';
 import { bindActionCreators } from 'redux';
 import { actions } from '../actions/index';
@@ -24,12 +23,11 @@ function mapDispatchToProps(dispatch) {
     beginEditing: actions.profile.beginEditing,
     endEditing: actions.profile.endEditing,
     changeNickname: actions.profile.changeNickname,
-    logout: actions.profile.logout,
   }, dispatch);
 }
 
 
-Profile.propTypes = {
+EditProfile.propTypes = {
   nickname: PropTypes.string.isRequired,
   ppUrl: PropTypes.string.isRequired,
   colorId: PropTypes.string.isRequired,
@@ -38,10 +36,9 @@ Profile.propTypes = {
   profileSelected: PropTypes.func,
   beginEditing: PropTypes.func.isRequired,
   endEditing: PropTypes.func.isRequired,
-  logout: PropTypes.func.isRequired,
 };
 
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profile)
+export default connect(mapStateToProps, mapDispatchToProps)(EditProfile)

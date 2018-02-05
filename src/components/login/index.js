@@ -15,13 +15,14 @@ import {
   Button
 } from 'native-base';
 import React from 'react';
-import styles from './styles'
+import styles from './styles';
+import globalStyles from '../globals/styles';
 
 class Login extends React.Component {
 
   render() {
     return (
-      <Container style={styles.container}>
+      <Container style={globalStyles.container}>
         <Content style={{ flex: 1 }} contentContainerStyle={{ flex: 1 }}>
 
           <View style={styles.logo}>

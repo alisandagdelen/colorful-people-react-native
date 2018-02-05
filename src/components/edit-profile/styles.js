@@ -16,7 +16,8 @@ export default function (props){
             fontSize: 22, 
             alignSelf: 'center', 
             color: props.colorId, 
-            fontWeight: 'bold'
+            fontWeight: 'bold',
+            textAlign: 'center'
         },
         titleText: {
             fontSize: 18,
@@ -41,13 +42,5 @@ export default function (props){
             justifyContent: 'center', 
             backgroundColor: props.colorId
           },
-        logoutButton: {
-            marginTop: 40, 
-            width: '80%', 
-            alignSelf: 'center', 
-            justifyContent: 'center', 
-            backgroundColor: 'red'
-          },
-    
     });
 }

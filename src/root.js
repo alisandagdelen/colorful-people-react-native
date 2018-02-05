@@ -21,8 +21,8 @@ export default class extends React.Component {
 
   // persist login
   async componentDidMount() {
-    // const userData = await AsyncStorage.getItem('userData');
-    const userData = null;
+    const userData = await AsyncStorage.getItem('userData');
+    //const userData = null;
 
     if (userData) {
       const data = JSON.parse(userData);
@@ -36,7 +36,8 @@ export default class extends React.Component {
     await Font.loadAsync({
       Roboto: require("native-base/Fonts/Roboto.ttf"),
       Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
-      Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf")
+      Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf"),
+      AvenirNext: require("../assets/fonts/AvenirNext-Regular.ttf"),
     });
 
     this.setState({ isReady: true });

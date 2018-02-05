@@ -10,10 +10,10 @@ type initialStateType = {
 };
 
 const initialState = {
-  nickname: '',
-  ppUrl: '',
-  colorId: '',
-  bio: '',
+  nickname: 'Betty',
+  ppUrl: 'https://media.glamour.com/photos/594c4b3f139d6316e9ef3246/master/w_644,c_limit/Glow_2.jpg',
+  colorId: 'rebeccapurple',
+  bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 };
 
 export default function (state: initialStateType = initialState, action: actionType) {

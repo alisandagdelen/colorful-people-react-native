@@ -5,9 +5,10 @@ import PropTypes from 'prop-types';
 import Chat from '../containers/chat-container';
 import Login from '../containers/login-container';
 import Signup from '../containers/signup-container';
+import EditProfile from '../containers/edit-profile-container';
 import { withMappedNavigationProps } from 'react-navigation-props-mapper';
 import { addNavigationHelpers, StackNavigator } from 'react-navigation';
-import HomeNavigator from './home-navigatior'
+import TabNavigator from './tab-navigator'
 
 
 export const AppNavigator = StackNavigator(
@@ -21,12 +22,16 @@ export const AppNavigator = StackNavigator(
       navigationOptions: { title: 'Signup' }
     },
     Home: {
-      screen: withMappedNavigationProps(HomeNavigator),
+      screen: withMappedNavigationProps(TabNavigator),
       navigationOptions: { header: null }
     },
     Chat: {
       screen: withMappedNavigationProps(Chat),
       navigationOptions: { title: 'Messages' }
+    },
+    EditProfile: {
+      screen: withMappedNavigationProps(EditProfile),
+      navigationOptions: { title: 'EditProfile' }
     }
   },
   {

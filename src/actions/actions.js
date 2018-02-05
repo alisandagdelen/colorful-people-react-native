@@ -1,71 +1,74 @@
 export default {
 
   chat: {
-    fetchMessageSuccess: { arguments: ['name', 'message'] },
-    fetchMessagesSuccess: { arguments: ['name', 'messages'] },
-    fetchMessagesFailure: { arguments: ['err'] },
+    fetchMessageSuccess: { payload: ['name', 'message'] },
+    fetchMessagesSuccess: { payload: ['name', 'messages'] },
+    fetchMessagesFailure: { payload: ['err'] },
 
     _selectChat: {
-      arguments: ['uid', 'otherUserEmail'],
+      payload: ['uid', 'otherUserEmail'],
       dispatch: {
         selected      : { argumentIndices: [0, 1] },
         fetchMessages : { argumentIndices: [0] },
       }
     },
 
-    listenForMessage: { arguments: ['chatUid'] },
+    listenForMessage: { payload: ['chatUid'] },
   },
 
 
   message: {
-    setTyping         : { arguments: ['text'] },
-    addMessage        : { arguments: ['chatUid', 'content', 'sender', 'to'] },
-    addMessageSuccess : { arguments: ['chatUid', 'message'] },
+    setTyping         : { payload: ['text'] },
+    addMessage        : { payload: ['chatUid', 'content', 'sender', 'to'] },
+    addMessageSuccess : { payload: ['chatUid', 'message'] },
     startListening    : { },
   },
 
 
   user: {
-    signInSuccess     : { arguments: ['data'] },
-    signUpSuccess     : { arguments: ['data'] },
+    signInSuccess     : { payload: ['data'] },
+    signUpSuccess     : { payload: ['data'] },
     fetchChats        : { },
-    fetchChatSuccess  : { arguments: ['data'] },
-    fetchChatsSuccess : { arguments: ['data'] },
+    fetchChatSuccess  : { payload: ['data'] },
+    fetchChatsSuccess : { payload: ['data'] },
   },
 
 
   signUp: {
-    apply           : { arguments: ['username', 'password'] },
-    changeUsername  : { arguments: ['username'] },
-    changePassword  : { arguments: ['password'] },
+    apply           : { payload: ['username', 'password'] },
+    changeUsername  : { payload: ['username'] },
+    changePassword  : { payload: ['password'] },
   },
 
 
   login: {
-    apply                 : { arguments: ['username', 'password'] },
-    changeSignInButtonText: { arguments: ['text'] },
-    changeUsername        : { arguments: ['username'] },
-    changePassword        : { arguments: ['password'] },
+    apply                 : { payload: ['username', 'password'] },
+    changeSignInButtonText: { payload: ['text'] },
+    changeUsername        : { payload: ['username'] },
+    changePassword        : { payload: ['password'] },
   },
 
 
   search: {
-    selectColor:      { arguments: ['color'] },
-    changeColorId:    { arguments: ['text'] },
-    foundByColorId:   { arguments: ['data'] },
-    startChat:        { arguments: ['userUid', 'otherUserEmail'] },
-    startChatSuccess: { arguments: ['chatData'] },
+    selectColor:      { payload: ['color'] },
+    changeColorId:    { payload: ['text'] },
+    foundByColorId:   { payload: ['data'] },
+    startChat:        { payload: ['userUid', 'otherUserEmail'] },
+    startChatSuccess: { payload: ['chatData'] },
   },
 
   profile: {
     select:           {},
     beginEditing:     {},
     endEditing:       {},
+    changeNickname:   { payload: ['nickname'] },
     changeNickname:   { arguments: ['nickname'] },
+    logout:           {},
   },
 
   nav: {
     resetToHome: {},
+    resetToLogin: {},
     navigateToChat: {},
   },
 };

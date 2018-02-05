@@ -1,33 +1,55 @@
 import React from 'react'
-import { FlatList } from 'react-native';
-import { Container, Content, Header, Item, Input, Icon, Button, ListItem, Body, Text } from 'native-base';
+import {
+  Container,
+  Content,
+  Header,
+  Item,
+  Input,
+  Icon,
+  List,
+  Button,
+  ListItem,
+  Body,
+  Text,
+  Left,
+  Thumbnail,
+  Right
+} from 'native-base';
+import globalStyles from '../globals/styles'
+import styles from './styles';
 
 export default class Home extends React.Component {
 
-  renderItem({ item }) {
+  renderItem(item) {
     const onButtonPressed = () => {
       this.props.selectChat(item.uid, item.otherUserEmail);
       this.props.navigation.navigate('Chat');
     };
 
     return (
-        <ListItem style={{ marginLeft: 0 }}
-                  onPress={onButtonPressed}>
-            <Body>
-              <Text>{item.name}</Text>
-            </Body>
-        </ListItem>
+      <ListItem avatar onPress={onButtonPressed}>
+        <Left>
+          <Thumbnail style={styles.avatar}
+                     source={{ uri: 'https://images.unsplash.com/photo-1474552226712-ac0f0961a954?auto=format&fit=crop&w=90&q=70' }}/>
+        </Left>
+        <Body>
+          <Text>{item.name}</Text>
+          <Text note>chat 1</Text>
+        </Body>
+        <Right>
+          <Text note>3:43 pm</Text>
+        </Right>
+      </ListItem>
     );
   }
 
   render() {
     return (
-      <Container>
+      <Container style={globalStyles.container}>
         <Content>
-          <FlatList data={Object.values(this.props.chats)}
-                    renderItem={this.renderItem.bind(this)}
-                    keyExtractor={(item) => item.uid}
-          />
+          <List dataArray={Object.values(this.props.chats)}
+                renderRow={this.renderItem.bind(this)}>
+          </List>
         </Content>
       </Container>
     );

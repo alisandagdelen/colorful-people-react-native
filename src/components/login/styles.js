@@ -1,15 +1,13 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native';
+import { primaryColor } from '../globals/colors';
 
 export default StyleSheet.create({
-  container: {
-    backgroundColor: '#fff',
-    flex: 1
-  },
   logo: {
     alignSelf: 'center',
     margin: 20,
   },
   primaryButton: {
+    backgroundColor: primaryColor,
     margin: 13,
   },
   buttonsContainer: {
