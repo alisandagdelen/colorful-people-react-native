@@ -11,7 +11,8 @@ type initialStateType = {
     [chatId: string]: {
       name: string,
       otherUserEmail: string,
-      uid: string
+      uid: string,
+      lastMessage: string,
     }
   },
 };
