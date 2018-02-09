@@ -22,7 +22,7 @@ export default  StyleSheet.create({
   },
   messageSection: {
     height: 40,
-    justifyContent: 'spaceBetween',
+    justifyContent: 'space-between',
   },
   message: {
     fontSize: 16,
