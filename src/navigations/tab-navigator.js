@@ -113,7 +113,7 @@ const CustomTabs = createNavigationContainer(
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: Platform.OS === 'ios' ? 20 : 0,
+    marginTop: Platform.OS === 'ios' ? 20 : 25,
   },
   tabContainer: {
     flexDirection: 'row',
