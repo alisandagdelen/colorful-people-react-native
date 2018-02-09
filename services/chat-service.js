@@ -107,7 +107,13 @@ export const fetchChatById = async (chatUid, { currentUserEmail }) => {
   const emails = Object.values(chat.members);
   const otherUserEmail = emails.find(email => email !== currentUserEmail);
   const lastMessage = await fetchChatLastMessage(chatUid);
-  return { name: otherUserEmail, otherUserEmail, uid: chat.uid, lastMessage: lastMessage.content };
+  return {
+    name: otherUserEmail,
+    otherUserEmail,
+    uid: chat.uid,
+    lastMessage: lastMessage.content,
+    lastMessageTime: lastMessage.createdAt
+  };
 };
 
 

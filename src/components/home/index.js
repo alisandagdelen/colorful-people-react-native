@@ -42,10 +42,15 @@ export default class Home extends React.Component {
           />
           {messageSection()}
         </Left>
-        <Right>
-          <Badge success>
+        <Right style={styles.rightSection}>
+          <Badge style={styles.badge} success>
             <Text>1</Text>
           </Badge>
+          <Text note style={styles.lastMessageTime}>{
+            item.lastMessageTime &&
+            new Date(item.lastMessageTime).getHours() + ': ' +
+            new Date(item.lastMessageTime).getMinutes()
+          }</Text>
         </Right>
       </ListItem>
     );
