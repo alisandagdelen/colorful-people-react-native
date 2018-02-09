@@ -81,6 +81,22 @@ export const fetchUserChats = async (userId, { currentUserEmail }) => {
 };
 
 
+export const fetchChatLastMessage = async (chatUid) => {
+  if (!chatUid) {
+    return null;
+  }
+
+  const messagesRef = firebase.database().ref(`messages`);
+  const s = await messagesRef
+    .orderByChild('chatUid')
+    .equalTo(chatUid)
+    .limitToLast(1)
+    .once('child_added');
+
+  return s.val();
+};
+
+
 export const fetchChatById = async (chatUid, { currentUserEmail }) => {
   if (!chatUid) {
     return {};
@@ -90,7 +106,8 @@ export const fetchChatById = async (chatUid, { currentUserEmail }) => {
   const chat = chatSnapshot.val();
   const emails = Object.values(chat.members);
   const otherUserEmail = emails.find(email => email !== currentUserEmail);
-  return { name: otherUserEmail, otherUserEmail, uid: chat.uid };
+  const lastMessage = await fetchChatLastMessage(chatUid);
+  return { name: otherUserEmail, otherUserEmail, uid: chat.uid, lastMessage: lastMessage.content };
 };
 
 

@@ -2,7 +2,9 @@
 
 import firebase from '../firebase/index';
 
-type createMessageReturn = Promise<{ key: string, sender: string, to: string, chatUid: string, createdAt: string }>;
+type createMessageReturn = Promise<{
+  key: string, sender: string, to: string, chatUid: string, createdAt: string
+}>
 
 export const createMessage = async (
   chatUid: string,

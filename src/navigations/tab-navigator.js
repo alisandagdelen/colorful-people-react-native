@@ -103,7 +103,7 @@ const CustomTabRouter = TabRouter(
   },
   {
     // Change this to start on a different tab
-    initialRouteName: 'Profile',
+    initialRouteName: 'Chats',
   }
 );
 

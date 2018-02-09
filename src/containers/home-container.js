@@ -24,7 +24,6 @@ function mapDispatchToProps(dispatch) {
 Home.propTypes = {
   chats: PropTypes.object.isRequired,
   otherUserEmail: PropTypes.string,
-
   selectChat: PropTypes.func.isRequired,
 };
 

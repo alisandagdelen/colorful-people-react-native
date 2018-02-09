@@ -1,15 +1,14 @@
 import React from 'react'
 import {
+  View,
   Container,
   Content,
-  Header,
   Item,
   Input,
   Icon,
   List,
-  Button,
   ListItem,
-  Body,
+  Badge,
   Text,
   Left,
   Thumbnail,
@@ -18,26 +17,35 @@ import {
 import globalStyles from '../globals/styles'
 import styles from './styles';
 
+
 export default class Home extends React.Component {
 
+
   renderItem(item) {
+    const messageSection = () => (
+      <View style={styles.messageSection}>
+        <Text style={styles.nickname}>{item.name}</Text>
+        <Text note>{item.lastMessage ? item.lastMessage.substr(0, 30) : ''}</Text>
+      </View>
+    );
+
     const onButtonPressed = () => {
       this.props.selectChat(item.uid, item.otherUserEmail);
       this.props.navigation.navigate('Chat');
     };
 
     return (
-      <ListItem avatar onPress={onButtonPressed}>
+      <ListItem style={styles.listItem} onPress={onButtonPressed}>
         <Left>
           <Thumbnail style={styles.avatar}
-                     source={{ uri: 'https://images.unsplash.com/photo-1474552226712-ac0f0961a954?auto=format&fit=crop&w=90&q=70' }}/>
+                     source={{ uri: 'https://images.unsplash.com/photo-1474552226712-ac0f0961a954?auto=format&fit=crop&w=90&q=70' }}
+          />
+          {messageSection()}
         </Left>
-        <Body>
-          <Text>{item.name}</Text>
-          <Text note>chat 1</Text>
-        </Body>
         <Right>
-          <Text note>3:43 pm</Text>
+          <Badge success>
+            <Text>1</Text>
+          </Badge>
         </Right>
       </ListItem>
     );
