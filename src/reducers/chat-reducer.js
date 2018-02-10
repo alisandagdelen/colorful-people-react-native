@@ -13,6 +13,7 @@ type initialStateType = {
       otherUserEmail: string,
       uid: string,
       lastMessage: string,
+      lastMessageTime: string,
     }
   },
 };
