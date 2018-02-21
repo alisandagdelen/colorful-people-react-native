@@ -19,7 +19,7 @@ export const loginApplyLogic = createLogic({
       const { username, password } = action.payload;
       const res = await userService.loginUser(username, password);
       dispatch(signInSuccess(res));
-      pushTokenService.createPushToken(res.uid);
+      await pushTokenService.createPushToken(res.uid);
       dispatch(fetchChats(res.chats));
       dispatch(resetToHome());
       dispatch(actions.login.success);
